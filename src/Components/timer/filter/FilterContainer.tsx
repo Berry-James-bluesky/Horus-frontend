@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Filter } from './Filter';
+import {useBetween} from 'use-between'
 import { Checkbox, Button } from "semantic-ui-react";
 
 /**
  * Stores rendered { Filter } components
  * @constructor
  */
+
+const useFilterState = () => {
+    const [filterParams, setFilter]: any = useState([])
+    const setFilterParams = (value: any) => {setFilter(value);} 
+    return ({filterParams, setFilterParams});
+}
+
+
+  export const useSharedFilterState = () => useBetween(useFilterState);
 
 export const FilterContainer = () => {
 

@@ -4,6 +4,7 @@ import './TimerContainer.scss';
 import test from '../../test.json';
 import { getTimers } from '../API';
 import Select from 'react-select';
+import { useBetween } from 'use-between';
 
 /**
  *
@@ -18,26 +19,44 @@ interface timerDataType {
     data: Array<object>
 }
 
+
+const useTimerState = () => {
+    const [timerModel, setModel] = useState<Array<timerDataType>>([]);
+    const [timerView, setView] = useState<Array<timerDataType>>([]);
+    const setTimerModel = (value: any) => {setModel(value);} 
+    const setTimerView = (value: any) => {setView(value)}
+    return ({timerModel, setTimerModel, timerView, setTimerView});
+}
+
+
+  export const useSharedTimerState = () => useBetween(useTimerState);
+
 const TimerContainer: React.FC = () => {
 
     // set states
     const [styleValue, setStyleValue] = useState('card');
-    const [fetchedTimers, setFetchedTimers] = useState<Array<timerDataType>>([]);
+    // const [fetchedTimers, setFetchedTimers] = useState<Array<timerDataType>>([]);
+    const {timerModel, setTimerModel, timerView, setTimerView} = useSharedTimerState();
 
     /**
      * @function
      * Get all stored timers from DB
      */
+    
 
     useEffect(() => {
         getTimers()
             .then(timers => {
                 // @ts-ignore
-                setFetchedTimers(timers.data)
-                console.log(fetchedTimers)
+                setTimerModel(timers.data)
+                console.log(timerModel)
             })
 
     }, [])
+
+    useEffect(() => {
+        setTimerView(timerModel);
+    }, [timerModel])
 
     // Define options for react-select dropdown
     const styleOptions = [
@@ -60,7 +79,7 @@ const TimerContainer: React.FC = () => {
             <>
                 <Select options={styleOptions} onChange={handleChange} className='w-50 float-right m-8 mt-0'/>
                 <div className={`timer-container ${styleValue}-container`}>
-                    {fetchedTimers.map((data: any) =>
+                    {timerView.map((data: any) =>
                         <TimerObj
                             key={data.name}
                             timerName={data.name}
