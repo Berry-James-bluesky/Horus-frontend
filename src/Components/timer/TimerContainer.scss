@@ -1,0 +1,21 @@
+@import '../../var';
+
+.timer-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    grid-template-rows: auto;
+}
+
+.card-container {
+    grid-template-rows: auto !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+}
+
+
+.list-container {
+    grid-template-rows: auto !important;
+    grid-template-columns: 1fr !important;
+}

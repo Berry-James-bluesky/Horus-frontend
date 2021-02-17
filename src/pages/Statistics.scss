@@ -1,0 +1,11 @@
+.stats-page-container {
+  text-align: left;
+  padding: 1rem;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+

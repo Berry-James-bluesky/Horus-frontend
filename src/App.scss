@@ -1,0 +1,50 @@
+/*IMPORTS*/
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+@import './var';
+
+
+h1, h2, h3, h4, h5, h6, p, li {
+  color: $text;
+}
+
+p {
+  color: $text;
+}
+
+.link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.App {
+  text-align: center;
+  background-color: $bg;
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

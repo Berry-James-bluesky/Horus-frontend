@@ -1,0 +1,33 @@
+@import '../../var';
+
+.timer {
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.list-item {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  grid-template-rows: 1fr !important;
+  border-left: 8px solid $h2;
+  max-height: 60px;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+
+
+  div {
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+}

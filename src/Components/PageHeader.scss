@@ -1,0 +1,46 @@
+@import '../var.scss';
+
+.navbar {
+    display: grid;
+    grid-template-columns: 20% 75% 5%;
+    grid-template-rows: 50px;
+}
+
+.nav-branding {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 15px;
+}
+
+//.nav-branding img {
+//    display: none;
+//}
+
+.nav-branding h2 {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Rammetto One', cursive;
+    font-weight: normal;
+    color: $h1;
+}
+
+.nav-options {
+    grid-column: 3 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 !important;
+}
+
+.nav-options i {
+    width: fit-content;
+    height: fit-content;
+}
+
+.branding-logo {
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;
+}

@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Statistics } from './pages/Statistics';
+import { Dashboard } from './pages/Dashboard';
+import { Settings } from './pages/Settings';
+import { Help } from './pages/Help';
+import { NotFound } from './pages/NotFound';
+import Sidebar from './Components/sidebar/Sidebar';
 
-function App() {
+// @ts-ignore
+const App: React.FC = ({ isVisible }) => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+          <main className="App grid grid-cols-main">
+              <Sidebar />
+              <section className='relative right-0 overflow-y-scroll pl-6 pr-6 main-content'>
+                  <Switch>
+                    <Route path='/' exact component={Dashboard} />
+                    <Route path='/dashboard' exact component={Dashboard} />
+                    <Route path='/statistics' exact component={Statistics} />
+                    <Route path='/help' exact component={Help} />
+                    <Route path='/settings' exact component={Settings} />
+                    <Route path='/' component={NotFound} />
+                </Switch>
+              </section>
+          </main>
+      </BrowserRouter>
+
   );
 }
 

@@ -1,0 +1,75 @@
+[
+  {
+    "name": "timer one",
+    "assignedTo": "user one",
+    "project": "project one",
+    "client": "client one",
+    "billable": true,
+    "time": {
+      "hours": 2,
+      "minutes": 15,
+      "seconds": 4
+    }
+
+  },
+  {
+    "name": "timer two",
+    "assignedTo": "user two",
+    "project": "project one",
+    "client": "client two",
+    "billable": false,
+    "time": {
+      "hours": 2,
+      "minutes": 15,
+      "seconds": 4
+    }
+  },
+  {
+    "name": "timer three",
+    "assignedTo": "user three",
+    "project": "project one",
+    "client": "client three",
+    "billable": false,
+    "time": {
+      "hours": 2,
+      "minutes": 15,
+      "seconds": 4
+    }
+  },
+  {
+    "name": "timer four",
+    "assignedTo": "user four",
+    "project": "project one",
+    "client": "client four",
+    "billable": false,
+    "time": {
+      "hours": 2,
+      "minutes": 15,
+      "seconds": 4
+    }
+  },
+  {
+    "name": "timer five",
+    "assignedTo": "user five",
+    "project": "project one",
+    "client": "client five",
+    "billable": true,
+    "time": {
+      "hours": 2,
+      "minutes": 15,
+      "seconds": 4
+    }
+  },
+  {
+    "name": "timer six",
+    "assignedTo": "user six",
+    "project": "project one",
+    "client": "client six",
+    "billable": true,
+    "time": {
+      "hours": 2,
+      "minutes": 15,
+      "seconds": 4
+    }
+  }
+]

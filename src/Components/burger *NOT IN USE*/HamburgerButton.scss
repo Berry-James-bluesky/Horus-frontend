@@ -1,0 +1,14 @@
+@import '../../var';
+
+.burger-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: $h1 !important;
+    outline: none;
+}
+
+.burger-btn:active, .burger-btn:focus {
+    border: none;
+    outline: none;
+}

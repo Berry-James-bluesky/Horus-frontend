@@ -1,0 +1,20 @@
+@import '../../var';
+
+@keyframes notifyEntry {
+  0% {
+    left: -200px;
+  }
+  20% {
+    left: 15px;
+  }
+  80% {
+    left: 15px;
+  }
+  100% {
+    left: -200px;
+  }
+}
+
+.notify {
+  animation: notifyEntry 4s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
