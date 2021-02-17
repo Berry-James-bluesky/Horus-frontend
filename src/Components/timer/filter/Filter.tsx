@@ -33,6 +33,8 @@ export const Filter: React.FC<Props> = (props: Props) => {
 
     const {filterParams, setFilterParams} = useSharedFilterState();
 
+    const [selectedOption, setSelectedOption]: any = useState(null);
+
 
     const filterTimers = (key: any, input: any) => {
         let filterArray: any = [];
@@ -131,6 +133,12 @@ export const Filter: React.FC<Props> = (props: Props) => {
         getData();
     }, []);
 
+    useEffect(() => {
+        if (!filterParams.user && !filterParams.client) {
+            
+        }
+    }, [timerView])
+
     useEffect(()=> {
         console.log('timers are', timerModel)
         console.log('timerView is', timerView)
@@ -141,7 +149,7 @@ export const Filter: React.FC<Props> = (props: Props) => {
 
     return(
         <div className='w-60 ml-6 mr-6'>
-            <Select placeholder={filterType} options={filterOptions} onChange={(e: any) => {filterTimers(e.value, filterType.toLowerCase())}} />
+            <Select placeholder={filterType} options={filterOptions} onChange={(e: any) => {setSelectedOption(e.value); filterTimers(e.value, filterType.toLowerCase())}} />
         </div>
     )
 
