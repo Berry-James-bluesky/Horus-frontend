@@ -3,6 +3,7 @@ import { Filter } from './Filter';
 import {useBetween} from 'use-between'
 import { Checkbox, Button } from "semantic-ui-react";
 import {useSharedTimerState} from '../TimerContainer'
+import { TextField } from '@material-ui/core';
 
 /**
  * Stores rendered { Filter } components
@@ -26,7 +27,7 @@ export const FilterContainer = () => {
     return(
         <div className='w-full h-20 bg-white flex justify-start flex-row items-center mb-12 p-6 border-l-8 border-secondary mt-12'>
             <Checkbox label='Active' />
-            <Filter isType='Project Name' />
+            <TextField className="searchbar" label="Search Tasks" /*onKeyUp={(e: any) => {handleSearch(e.target.value.toLowerCase())}}*/ />
             <Filter isType='User' />
             <Filter isType='Client' />
             <Button onClick={() => {setTimerView(timerModel); setFilterParams([])}}>Reset Filters</Button>
