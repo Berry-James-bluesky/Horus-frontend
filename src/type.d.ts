@@ -14,5 +14,5 @@ interface ApiDataType {
     project: string
     client: string
     billable :boolean
-    timer: object;
+    timers: object;
 }

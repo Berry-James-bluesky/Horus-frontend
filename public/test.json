@@ -4,41 +4,137 @@
     "assignedTo": "user one",
     "project": "project one",
     "client": "client one",
-    "billable": true
+    "billable": true,
+    "timers": [
+
+      {
+        "id": 1,
+        "startTime": "February 16, 2021 14:08:50",
+        "endTime": "February 16, 2021 16:23:12"
+      },
+
+      {
+        "id": 2,
+        "startTime": "February 14, 2021 08:07:30",
+        "endTime": "February 16, 2021 10:43:02"
+      }
+
+    ]
+
   },
   {
     "name": "timer two",
     "assignedTo": "user two",
-    "project": "project one",
+    "project": "project two",
     "client": "client two",
-    "billable": false
+    "billable": false,
+
+    "timers": [
+
+      {
+        "id": 1,
+        "startTime": "February 16, 2021 03:08:50",
+        "endTime": "February 16, 2021 22:23:12"
+      },
+
+      {
+        "id": 2,
+        "startTime": "February 14, 2021 11:07:30",
+        "endTime": "February 16, 2021 12:43:02"
+      }
+
+    ]
   },
   {
     "name": "timer three",
     "assignedTo": "user three",
-    "project": "project one",
+    "project": "project three",
     "client": "client three",
-    "billable": false
+    "billable": false,
+
+    "timers": [
+
+      {
+        "id": 1,
+        "startTime": "February 16, 2021 13:08:50",
+        "endTime": "February 16, 2021 14:23:12"
+      },
+
+      {
+        "id": 2,
+        "startTime": "February 14, 2021 16:07:30",
+        "endTime": "February 16, 2021 18:43:02"
+      }
+
+    ]
   },
   {
     "name": "timer four",
     "assignedTo": "user four",
-    "project": "project one",
+    "project": "project four",
     "client": "client four",
-    "billable": false
+    "billable": false,
+
+    "timers": [
+
+      {
+        "id": 1,
+        "startTime": "February 16, 2021 10:08:50",
+        "endTime": "February 16, 2021 12:23:12"
+      },
+
+      {
+        "id": 2,
+        "startTime": "February 14, 2021 13:07:30",
+        "endTime": "February 16, 2021 15:43:02"
+      }
+
+    ]
   },
   {
     "name": "timer five",
     "assignedTo": "user five",
-    "project": "project one",
+    "project": "project five",
     "client": "client five",
-    "billable": true
+    "billable": true,
+
+    "timers": [
+
+      {
+        "id": 1,
+        "startTime": "February 16, 2021 09:08:50",
+        "endTime": "February 16, 2021 12:23:12"
+      },
+
+      {
+        "id": 2,
+        "startTime": "February 14, 2021 13:07:30",
+        "endTime": "February 16, 2021 15:43:02"
+      }
+
+    ]
   },
   {
     "name": "timer six",
     "assignedTo": "user six",
-    "project": "project one",
+    "project": "project six",
     "client": "client six",
-    "billable": true
+    "billable": true,
+
+    "timers": [
+
+      {
+        "id": 1,
+        "startTime": "February 16, 2021 18:08:50",
+        "endTime": "February 16, 2021 20:23:12"
+      },
+
+      {
+        "id": 2,
+        "startTime": "February 14, 2021 05:07:30",
+        "endTime": "February 16, 2021 08:43:02"
+      }
+
+    ]
   }
 ]
