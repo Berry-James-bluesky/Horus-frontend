@@ -59,6 +59,10 @@ const Graph = (props: Props) => {
     }
 
 
+    let date = new Date();
+
+    let string = date.toString()
+
     if(props.graphType === 'bar') {
         return(
             <Bar
