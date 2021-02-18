@@ -1,0 +1,16 @@
+.searchbar {
+  .MuiInputLabel-formControl {
+    transform: translate(0, 15px) scale(1);
+    padding: 0 0 0 10px;
+  }
+  .MuiInputBase-root {
+    height: 38px !important;
+    margin: 0;
+  }
+  margin: 0 20px 0 40px !important;
+  height: 38px !important;
+}
+.MuiInputLabel-shrink {
+  transform: translate(0, 1.5px) scale(0.75) !important;
+  padding: 0 0 0 20px !important;
+}
