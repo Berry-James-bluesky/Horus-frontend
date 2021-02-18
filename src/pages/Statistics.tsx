@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import PieGraph from '../Components/chart/PieGraph';
+import PieGraph from '../Components/chart/Graph';
 import BarGraph from '../Components/chart/BarGraph';
 import { ChartFilter } from '../Components/chart/filters/ChartFilter';
 import './Statistics.scss';
 import { Button } from 'semantic-ui-react';
+import CalcContainer from '../Components/chart/Calculations/CalcContainer'
+import { Total } from '../Components/chart/Calculations/Total';
 
 export const Statistics: React.FC = () => {
 
@@ -57,18 +59,18 @@ export const Statistics: React.FC = () => {
         console.log(chartType)
     };
 
-    const activeChart = () => {
-        if(chartType === 'pie') {
-            return(
-                <PieGraph graphData={chartData} graphOptions={chartOptions} />
-            )
-        }
-        if(chartType === 'bar') {
-            return(
-                <BarGraph graphData={chartData} graphOptions={chartOptions}/>
-            )
-        }
-    };
+    // const activeChart = () => {
+    //     if(chartType === 'pie') {
+    //         return(
+    //             <PieGraph graphData={chartData} graphOptions={chartOptions} />
+    //         )
+    //     }
+    //     if(chartType === 'bar') {
+    //         return(
+    //             <BarGraph graphData={chartData} graphOptions={chartOptions}/>
+    //         )
+    //     }
+    // };
 
 
     return(
@@ -79,12 +81,13 @@ export const Statistics: React.FC = () => {
                 <Button onClick={handleGraphChange} value='pie'>Pie</Button>
                 <Button onClick={handleGraphChange} value='bar'>Bar</Button>
             </div>
-
+            <CalcContainer />
             <section className='w-full'>
 
-                <article className='w-4/5 '>
-                    {activeChart()}
-                </article>
+                {/*<article className='w-4/5 '>*/}
+                {/*    /!*{activeChart()}*!/*/}
+                {/*    <Total />*/}
+                {/*</article>*/}
 
 
             </section>
