@@ -1,24 +1,28 @@
 .add-button {
-    background-image: linear-gradient(90deg, rgba(226,109,92,1) 0%, rgba(255,225,168,1) 100%) !important;
-    background-size: 300% auto !important;
-    color: #fff !important;
-    font-size: 2rem;
-    border: none;
-    border-radius: 5px;
-    padding: 0 20px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    transition: 0.5s !important;
+  background-image: linear-gradient(
+    90deg,
+    rgba(226, 109, 92, 1) 0%,
+    rgba(255, 225, 168, 1) 100%
+  ) !important;
+  background-size: 300% auto !important;
+  color: #fff !important;
+  font-size: 2rem;
+  border: none;
+  border-radius: 5px;
+  padding: 0 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  transition: 0.5s !important;
 }
 
 .add-button:hover {
-    transform: scale(1.1);
-    background-position: right center !important; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  transform: scale(1.1);
+  background-position: right center !important; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 .add-button i {
-    margin: 0 !important; /*override semantic UI margin*/
+  margin: 0 !important; /*override semantic UI margin*/
 }
