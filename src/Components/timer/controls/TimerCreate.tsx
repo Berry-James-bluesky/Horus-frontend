@@ -55,23 +55,8 @@ const TimerCreate = () => {
   };
 
   const handleTimerAdd = (e: React.FormEvent<HTMLInputElement>): void => {
-    if (Date.parse(startTime) < Date.parse(endTime)) {
-      setTimerData({
-        ...timerData,
-        startTime: startTime,
-        endTime: endTime,
-      });
-      setNotifyMsg("Timer successfully added");
-      setIconState("check");
-      setShowNotify(true);
-      setTimeout(
-        function () {
-          setShowNotify(false);
-        }.bind(this),
-        4000
-      );
-    } else {
-      setNotifyMsg("End date must occur later than start date");
+    if (!(timerData.name || timerData.assignedTo)) {
+      setNotifyMsg("Please enter all fields");
       setIconState("close");
       setShowNotify(true);
       setTimeout(
@@ -80,6 +65,33 @@ const TimerCreate = () => {
         }.bind(this),
         4000
       );
+    } else {
+      if (Date.parse(startTime) < Date.parse(endTime)) {
+        setTimerData({
+          ...timerData,
+          startTime: startTime,
+          endTime: endTime,
+        });
+        setNotifyMsg("Timer successfully added");
+        setIconState("check");
+        setShowNotify(true);
+        setTimeout(
+          function () {
+            setShowNotify(false);
+          }.bind(this),
+          4000
+        );
+      } else {
+        setNotifyMsg("End date must occur later than start date");
+        setIconState("close");
+        setShowNotify(true);
+        setTimeout(
+          function () {
+            setShowNotify(false);
+          }.bind(this),
+          4000
+        );
+      }
     }
   };
 
