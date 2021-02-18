@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import test from "../../../test.json";
 import { useSharedTimerState } from "../TimerContainer";
 import { useSharedFilterState } from "./FilterContainer";
+=======
+import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
+import test from '../../../test.json';
+import { useSharedTimerState } from '../TimerContainer'
+import { useSharedFilterState } from './FilterContainer';
+>>>>>>> main
 
 /**
  * Multi-use dropdown-style filter powered by { react-select }

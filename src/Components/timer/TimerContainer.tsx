@@ -29,7 +29,7 @@ const useTimerState = () => {
 }
 
 
-  export const useSharedTimerState = () => useBetween(useTimerState);
+export const useSharedTimerState = () => useBetween(useTimerState);
 
 const TimerContainer: React.FC = () => {
 
