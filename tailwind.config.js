@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // Simple 16 column grid
-        'main': '250px 1fr',
+        // 'main': '250px 1fr',
+        'main': 'minmax(250px, 250px) minmax(250px, 1fr)'
       }
     },
     color: {

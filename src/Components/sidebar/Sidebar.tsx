@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 const Sidebar: React.FC = () => {
 
     return(
-        <div className='col-span-1 h-screen bg-gray-50 border-r-2 background-black pl-6 sticky'>
+        <div className='h-screen bg-gray-50 border-r-2 background-black pl-6 sticky fixed top-0 left-0 w-96'>
             <div className='flex align-center w-full row-span-1 pt-6 pb-2 mb-6'>
                 <Link to='/' className='font-primary'>
                     <span className='font-serif text-2xl font-normal inline-flex'>
