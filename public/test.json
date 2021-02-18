@@ -49,7 +49,7 @@
     "name": "timer three",
     "assignedTo": "user three",
     "project": "project three",
-    "client": "client three",
+    "client": "client two",
     "billable": false,
 
     "timers": [
@@ -95,7 +95,7 @@
     "name": "timer five",
     "assignedTo": "user five",
     "project": "project five",
-    "client": "client five",
+    "client": "client three",
     "billable": true,
 
     "timers": [

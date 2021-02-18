@@ -94,13 +94,13 @@ export const Filter: React.FC<Props> = (props: Props) => {
         }
     }, [timerView])
 
-    useEffect(()=> {
-        console.log('timers are', timerModel)
-        console.log('timerView is', timerView)
-        console.log('filter options are', filterOptions)
-        console.log('filter is', filterParams)
-    }, [timerView])
-    console.log('timerView is', timerView)
+    // useEffect(()=> {
+    //     console.log('timers are', timerModel)
+    //     console.log('timerView is', timerView)
+    //     console.log('filter options are', filterOptions)
+    //     console.log('filter is', filterParams)
+    // }, [timerView])
+    // console.log('timerView is', timerView)
 
     return(
         <div className='w-60 ml-6 mr-6'>
