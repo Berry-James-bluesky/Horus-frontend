@@ -1,5 +1,8 @@
-import React from "react";
-import TimePicker from "react-time-picker";
+import React, { useEffect, useState } from "react";
+import DateTimePicker from "react-datetime-picker";
+import "./TimeTracker.scss";
+import { useBetween } from "use-between";
+import { useSharedTimeState } from "./functions/sharedTimeState";
 
 /**
  * Used to select a time duration to add to a project timer
@@ -9,11 +12,36 @@ import TimePicker from "react-time-picker";
  */
 
 export const TimeTracker = () => {
-  const [time, setTime] = React.useState("00:00");
+  const {
+    startTime,
+    setStartTimeValue,
+    endTime,
+    setEndTimeValue,
+  } = useSharedTimeState();
+
+  useEffect(() => {
+    setStartTimeValue(null);
+    setEndTimeValue(null);
+  }, []);
 
   return (
-    <div>
-      <TimePicker value={time} onChange={(e: any) => setTime(e)} />
+    <div className="flex flex-row">
+      <div className="flex flex-col items-start text-gray-500 ml-6 mr-6">
+        <label>Start Date:</label>
+        <DateTimePicker
+          maxDetail="second"
+          value={startTime}
+          onChange={(e: any) => setStartTimeValue(e)}
+        />
+      </div>
+      <div className="flex flex-col items-start text-gray-500 ml-6 mr-6">
+        <label>End Date:</label>
+        <DateTimePicker
+          maxDetail="second"
+          value={endTime}
+          onChange={(e: any) => setEndTimeValue(e)}
+        />
+      </div>
     </div>
   );
 };
