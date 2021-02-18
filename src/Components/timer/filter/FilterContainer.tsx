@@ -4,21 +4,12 @@ import { useBetween } from "use-between";
 import { Checkbox, Button } from "semantic-ui-react";
 import { useSharedTimerState } from "../TimerContainer";
 import { TextField } from "@material-ui/core";
+import { useSharedFilterState } from "./functions/sharedFilterState";
 
 /**
  * Stores rendered { Filter } components
  * @constructor
  */
-
-const useFilterState = () => {
-  const [filterParams, setFilter]: any = useState([]);
-  const setFilterParams = (value: any) => {
-    setFilter(value);
-  };
-  return { filterParams, setFilterParams };
-};
-
-export const useSharedFilterState = () => useBetween(useFilterState);
 
 export const FilterContainer = () => {
   const { filterParams, setFilterParams } = useSharedFilterState();
