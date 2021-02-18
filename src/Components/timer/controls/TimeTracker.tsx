@@ -1,5 +1,5 @@
-import React from 'react';
-import TimePicker from 'react-time-picker';
+import React from "react";
+import TimePicker from "react-time-picker";
 
 /**
  * Used to select a time duration to add to a project timer
@@ -9,15 +9,11 @@ import TimePicker from 'react-time-picker';
  */
 
 export const TimeTracker = () => {
+  const [time, setTime] = React.useState("00:00");
 
-    const [time] = React.useState('00:00');
-
-    return(
-        <div>
-            <TimePicker
-            value={time}
-
-            />
-        </div>
-    )
-}
+  return (
+    <div>
+      <TimePicker value={time} onChange={(e: any) => setTime(e)} />
+    </div>
+  );
+};
