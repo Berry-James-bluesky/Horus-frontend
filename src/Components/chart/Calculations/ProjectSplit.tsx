@@ -101,7 +101,6 @@ export const ProjectSplit = (props: Props) => {
             graphLabels={fetchedLabels}
             graphName={props.splitName}
         />
-        // <span>fdslkafjsk</span>
     )
 
 }
