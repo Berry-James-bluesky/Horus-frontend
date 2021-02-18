@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TimerObj } from './TimerObj';
 import './TimerContainer.scss';
-import test from '../../test.json';
 import { getTimers } from '../API';
 import Select from 'react-select';
 import { useBetween } from 'use-between';
@@ -19,7 +18,6 @@ interface timerDataType {
     data: Array<object>
 }
 
-
 const useTimerState = () => {
     const [timerModel, setModel] = useState<Array<timerDataType>>([]);
     const [timerView, setView] = useState<Array<timerDataType>>([]);
@@ -27,7 +25,6 @@ const useTimerState = () => {
     const setTimerView = (value: any) => {setView(value)}
     return ({timerModel, setTimerModel, timerView, setTimerView});
 }
-
 
 export const useSharedTimerState = () => useBetween(useTimerState);
 
@@ -42,7 +39,6 @@ const TimerContainer: React.FC = () => {
      * @function
      * Get all stored timers from DB
      */
-    
 
     useEffect(() => {
         getTimers()

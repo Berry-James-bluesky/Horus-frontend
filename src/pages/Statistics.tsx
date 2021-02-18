@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import PieGraph from '../Components/chart/Graph';
-import BarGraph from '../Components/chart/BarGraph';
 import { ChartFilter } from '../Components/chart/filters/ChartFilter';
 import './Statistics.scss';
 import { Button } from 'semantic-ui-react';
 import CalcContainer from '../Components/chart/Calculations/CalcContainer'
-import { Total } from '../Components/chart/Calculations/Total';
 
 export const Statistics: React.FC = () => {
 

@@ -58,7 +58,6 @@ const Graph = (props: Props) => {
         }
     }
 
-
     if(props.graphType === 'bar') {
         return(
             <Bar
