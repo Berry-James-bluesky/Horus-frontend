@@ -14,7 +14,7 @@ import { useSharedTimeState } from "./functions/sharedTimeState";
  */
 
 const TimerCreate = () => {
-  const [timerData, setTimerData] = useState<ITimer | {}>({});
+  const [timerData, setTimerData] = useState<ITimer | any>({});
   /** Data taken from form fields and PUT to the backend */
   const [isBillable, setIsBillable] = useState(false);
   /** Billable checkbox value (as boolean) */
