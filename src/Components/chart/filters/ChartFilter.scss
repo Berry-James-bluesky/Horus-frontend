@@ -1,0 +1,118 @@
+@import '../../../var';
+
+.chart-filter {
+  box-shadow: inset 10px 0 1rem rgba(100, 100, 100, 0.1);
+  z-index: 1;
+  transition: 0.5s;
+  background-color: #f8f8f8;
+  transform: translateX(-21px);
+  width: 16rem;
+
+
+  .chart-filter-btn {
+    background-color: $h2;
+    border-radius: 5px;
+    padding: 0.7rem;
+    color: #fff;
+  }
+
+  .filter-header {
+
+    i {
+      display: none;
+      color: #fff;
+    }
+
+  }
+
+  .filter-btn-icon {
+    color: #fff;
+    display: none;
+  }
+
+  .filters-header {
+    color: #000;
+    width: 100%;
+    text-align: left;
+  }
+
+  i {
+    transition: 0.5s;
+  }
+
+  .chart-filter-btn {
+    margin: 5px;
+  }
+}
+
+.chart-filters-visible {
+}
+
+.chart-filters-hidden {
+  width: 60px !important;
+  background-color: $h1;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: none;
+  width: 60px;
+  transition: 0.5s;
+
+  .filter-icon-container {
+  }
+
+  .filter-header {
+    height: 61px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    width: 100%;
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    h3 {
+      display: none;
+    }
+
+    i {
+      display: flex;
+      font-size: 1.5rem;
+      margin: 0;
+
+    }
+
+  }
+
+  .filter-btn-icon {
+    display: block;
+    font-size: 2rem;
+    min-height: fit-content;
+    min-width: fit-content;
+
+
+  }
+
+  span {
+    display: none;
+  }
+
+  .chart-filter-btn {
+    display: flex !important;
+    justify-content: center !important;
+    min-width: fit-content !important;
+    min-height: fit-content !important;
+    padding: 0.2rem !important;
+    background: none !important;
+  }
+
+  .arrow-btn {
+    transform: rotate(180deg);
+    margin: 0;
+    color: #fff;
+  }
+
+}

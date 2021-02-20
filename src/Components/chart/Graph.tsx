@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pie, Bar } from 'react-chartjs-2';
+import { Pie, Bar, Doughnut, Bubble, Line, Radar, Polar, HorizontalBar, Scatter } from 'react-chartjs-2';
 
 /**
  * Generates a Pie graph out of supplied data
@@ -9,7 +9,7 @@ import { Pie, Bar } from 'react-chartjs-2';
  */
 
 interface Props {
-    graphType: string
+    graphType: any
     graphData: Array<number>
     graphLabels: Array<string>
     graphName: string
@@ -18,26 +18,17 @@ interface Props {
 const Graph = (props: Props) => {
 
     const data = {
-        type: 'pie',
         labels: props.graphLabels,
         datasets: [{
             label: props.graphName,
             data: props.graphData,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                '#e97568',
+                '#f5e09f',
+                '#aac1a7',
+                '#9a9174',
+                '#59899c',
+                '#045171'
             ],
             borderWidth: 1
         }]
@@ -58,12 +49,23 @@ const Graph = (props: Props) => {
         }
     }
 
-
     let date = new Date();
 
     let string = date.toString()
 
-    if(props.graphType === 'bar') {
+
+
+    if(props.graphType === 'Pie') {
+
+        return(
+            <Pie
+                data={data}
+                options={options}
+            />
+        )
+    };
+    if(props.graphType === 'Bar') {
+
         return(
             <Bar
                 data={data}
@@ -71,10 +73,64 @@ const Graph = (props: Props) => {
             />
         )
     };
+    if(props.graphType === 'Line') {
 
-    if(props.graphType === 'pie') {
         return(
-            <Pie
+            <Line
+                data={data}
+                options={options}
+            />
+        )
+    };
+    if(props.graphType === 'Radar') {
+
+        return(
+            <Radar
+                data={data}
+                options={options}
+            />
+        )
+    };
+    if(props.graphType === 'Polar') {
+
+        return(
+            <Polar
+                data={data}
+                options={options}
+            />
+        )
+    };
+    if(props.graphType === 'Doughnut') {
+
+        return(
+            <Doughnut
+                data={data}
+                options={options}
+            />
+        )
+    };
+    if(props.graphType === 'Horizontal') {
+
+        return(
+            <HorizontalBar
+                data={data}
+                options={options}
+            />
+        )
+    };
+    if(props.graphType === 'Scatter') {
+
+        return(
+            <Scatter
+                data={data}
+                options={options}
+            />
+        )
+    };
+    if(props.graphType === 'Bubble') {
+
+        return(
+            <Bubble
                 data={data}
                 options={options}
             />

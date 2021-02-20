@@ -6,6 +6,7 @@ import { Dashboard } from './pages/Dashboard';
 import { Settings } from './pages/Settings';
 import { Help } from './pages/Help';
 import { NotFound } from './pages/NotFound';
+import { Calendar } from './pages/Calendar';
 import Sidebar from './Components/sidebar/Sidebar';
 
 // @ts-ignore
@@ -22,6 +23,7 @@ const App: React.FC = ({ isVisible }) => {
                     <Route path='/statistics' exact component={Statistics} />
                     <Route path='/help' exact component={Help} />
                     <Route path='/settings' exact component={Settings} />
+                    <Route path='/calendar' exact component={Calendar} />
                     <Route path='/' component={NotFound} />
                 </Switch>
               </section>
