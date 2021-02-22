@@ -25,7 +25,7 @@
   {
     "name": "timer two",
     "assignedTo": "user two",
-    "project": "project two",
+    "project": "project one",
     "client": "client two",
     "billable": false,
 
@@ -48,7 +48,7 @@
   {
     "name": "timer three",
     "assignedTo": "user three",
-    "project": "project three",
+    "project": "project one",
     "client": "client two",
     "billable": false,
 

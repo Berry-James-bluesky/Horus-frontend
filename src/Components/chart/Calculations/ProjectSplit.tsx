@@ -11,10 +11,13 @@ interface Props {
     data: any
     splitName: string
     splitBy: string
+    graphType: string
     /** PLEASE START THIS STRING WITH .el (i.e. el.client)*/
 }
 
 export const ProjectSplit = (props: Props) => {
+
+    console.log(props.splitBy)
 
     /**
      * @typedef
@@ -92,11 +95,11 @@ export const ProjectSplit = (props: Props) => {
         setFetchedData(finalTimes);
         setFetchedLabels(finalLabels);
 
-    }, [])
+    }, [props.splitBy])
 
     return(
         <Graph
-            graphType={'pie'}
+            graphType={props.graphType}
             graphData={fetchedData}
             graphLabels={fetchedLabels}
             graphName={props.splitName}

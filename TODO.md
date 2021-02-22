@@ -11,3 +11,9 @@ _Pages_
 - Design statistics page
 - Add more to help menu
 
+Chart options to add:
+- All timers
+- Client Split
+- Project Split
+- User Split
+- 
