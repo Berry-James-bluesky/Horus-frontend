@@ -5,6 +5,7 @@ import { Checkbox, Button } from "semantic-ui-react";
 import { useSharedTimerState } from "../TimerContainer";
 import { TextField } from "@material-ui/core";
 import { useSharedFilterState } from "./functions/sharedFilterState";
+import "./FilterContainer.scss";
 
 /**
  * Stores rendered { Filter } components

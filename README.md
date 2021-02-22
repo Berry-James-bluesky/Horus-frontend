@@ -13,6 +13,7 @@ Built in React using Typescript.
 - [date-fns](https://date-fns.org)
 - [Semantic UI for React](https://react.semantic-ui.com)
 - [Use Between](https://github.com/betula/use-between)
+- [Full Calendar](https://fullcalendar.io)
 
 ## Setup
 

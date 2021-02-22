@@ -38,6 +38,13 @@ const TimerCreate = () => {
     console.log(timerData);
   }, [timerData]);
 
+  useEffect(() => {
+    setTimerData({
+      ...timerData,
+      billable: isBillable,
+    });
+  }, [isBillable]);
+
   const handleTimerName = (e: React.FormEvent<HTMLInputElement>): void => {
     setTimerData({
       ...timerData,
@@ -54,7 +61,7 @@ const TimerCreate = () => {
     console.log(timerData);
   };
 
-  const handleTimerAdd = (e: React.FormEvent<HTMLInputElement>): void => {
+  const handleTimerAdd = (): void => {
     if (!(timerData.name || timerData.assignedTo)) {
       setNotifyMsg("Please enter all fields");
       setIconState("close");
@@ -81,9 +88,7 @@ const TimerCreate = () => {
           }.bind(this),
           4000
         );
-      } else {
-        setNotifyMsg("End date must occur later than start date");
-        setIconState("close");
+
         setShowNotify(true);
         setTimeout(
           function () {
@@ -93,20 +98,6 @@ const TimerCreate = () => {
         );
       }
     }
-  };
-
-  const handleBillable = (e: React.FormEvent<HTMLInputElement>): void => {
-    if (!isBillable) {
-      setIsBillable(true);
-    } else {
-      setIsBillable(false);
-    }
-
-    setTimerData({
-      ...timerData,
-      billable: isBillable,
-    });
-    console.log(timerData);
   };
 
   return (
@@ -126,14 +117,19 @@ const TimerCreate = () => {
           <TimeTracker />
         </div>
 
-        <Form.Field
-          control={Checkbox}
-          label="Billable?"
-          onChange={handleBillable}
+        <Form.Field label="Billable?" />
+        <Checkbox
+          checked={isBillable}
+          onChange={(e: any) => {
+            setIsBillable((initialValue: any) => !initialValue);
+          }}
+          inputProps={{ "aria-label": "primary checkbox" }}
         />
       </Form.Field>
       <AddButton
-        addTimer={handleTimerAdd}
+        addTimer={(e: React.FormEvent<HTMLInputElement>) => {
+          handleTimerAdd();
+        }}
         isDisabled={timerData === undefined ? true : false}
       />
       <Notify isVisible={showNotify} text={notifyMsg} icon={iconState} />

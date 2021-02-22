@@ -1,11 +1,17 @@
 /*IMPORTS*/
-@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-@import './var';
+@import "./var";
 
-
-h1, h2, h3, h4, h5, h6, p, li {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
   color: $text;
 }
 
@@ -42,4 +48,11 @@ p {
 }
 .MuiInputLabel-shrink {
   transform: translate(0, 1.5px) scale(0.75) !important;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
