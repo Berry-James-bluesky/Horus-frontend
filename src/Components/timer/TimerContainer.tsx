@@ -34,7 +34,7 @@ export const useSharedTimerState = () => useBetween(useTimerState);
 
 const TimerContainer: React.FC = () => {
   // set states
-  const [styleValue, setStyleValue] = useState("card");
+  const [styleValue, setStyleValue] = useState("list");
   // const [fetchedTimers, setFetchedTimers] = useState<Array<timerDataType>>([]);
   const {
     timerModel,
@@ -63,12 +63,12 @@ const TimerContainer: React.FC = () => {
   // Define options for react-select dropdown
   const styleOptions = [
     {
-      value: "card",
-      label: "Card",
-    },
-    {
       value: "list",
       label: "List",
+    },
+    {
+      value: "card",
+      label: "Card",
     },
   ];
 
