@@ -16,9 +16,15 @@ export const FilterContainer = () => {
   const { filterParams, setFilterParams } = useSharedFilterState();
   const { timerView, setTimerView, timerModel } = useSharedTimerState();
 
+  const [returnedResults, filterResults]: any = useState([]);
+
   useEffect(() => {
     filterTimers();
   }, [filterParams]);
+
+  const filterByWord = (value: any) => {
+    setFilterParams({ ...filterParams, name: value });
+  };
 
   const filterTimers = () => {
     let filteredResults = timerModel;
@@ -29,12 +35,13 @@ export const FilterContainer = () => {
         const key: string = filter[0];
         const value: string = filter[1];
         let result: any = filteredResults.filter(
-          (obj: any) => obj[key] === value
+          (obj: any) => obj[key] === value || obj[key].includes(value)
         );
         console.log("result is ", result);
         filteredResults = result;
       });
       setTimerView(filteredResults);
+      filterResults(filteredResults);
     }
   };
 
@@ -44,9 +51,9 @@ export const FilterContainer = () => {
       <TextField
         className="searchbar"
         label="Search Tasks"
-        // onKeyUp={(e: any) => {
-        //   filterTimers(e.target.value.toLowerCase(), "keyword");
-        // }}
+        onKeyUp={(e: any) => {
+          filterByWord(e.target.value.toLowerCase());
+        }}
       />
       <Filter isType="assignedTo" filter={filterTimers} />
       <Filter isType="client" filter={filterTimers} />
