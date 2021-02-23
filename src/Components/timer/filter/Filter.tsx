@@ -31,7 +31,7 @@ export const Filter: React.FC<Props> = (props: Props) => {
     setTimerView,
   } = useSharedTimerState();
 
-  const [filterType, setFilterType] = useState(props.isType);
+  const [filterType, setFilterType]: any = useState(props.isType);
   /** value is set by props.isType */
 
   let filterOptionsArray: Array<object> = [];
@@ -59,7 +59,7 @@ export const Filter: React.FC<Props> = (props: Props) => {
       });
     }
 
-    if (filterType === "User") {
+    if (filterType === "assignedTo") {
       test.forEach((item) => {
         let filterObj = {
           value: "",
@@ -71,7 +71,7 @@ export const Filter: React.FC<Props> = (props: Props) => {
       });
     }
 
-    if (filterType === "Client") {
+    if (filterType === "client") {
       test.forEach((item) => {
         let filterObj = {
           value: "",
@@ -105,13 +105,18 @@ export const Filter: React.FC<Props> = (props: Props) => {
   }, [timerView]);
   console.log("timerView is", timerView);
 
+  useEffect(() => {
+    console.log(filterParams);
+  }, [filterParams]);
+
   return (
     <div className="w-60 ml-6 mr-6">
       <Select
         placeholder={filterType}
         options={filterOptions}
+        // on change the filter params are set to the previous filters + the filter type as a key and the event value as the value
         onChange={(e: any) => {
-          filter(e.value, filterType.toLowerCase());
+          setFilterParams({ ...filterParams, [filterType]: e.value });
         }}
       />
     </div>
