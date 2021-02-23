@@ -114,9 +114,9 @@ export const Filter: React.FC<Props> = (props: Props) => {
       <Select
         placeholder={filterType}
         options={filterOptions}
+        // on change the filter params are set to the previous filters + the filter type as a key and the event value as the value
         onChange={(e: any) => {
           setFilterParams({ ...filterParams, [filterType]: e.value });
-          let array: any = filterParams;
         }}
       />
     </div>

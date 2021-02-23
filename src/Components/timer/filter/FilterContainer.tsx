@@ -16,32 +16,39 @@ export const FilterContainer = () => {
   const { filterParams, setFilterParams } = useSharedFilterState();
   const { timerView, setTimerView, timerModel } = useSharedTimerState();
 
-  const [returnedResults, filterResults]: any = useState([]);
-
+  // runs every time the filterParams state changes
   useEffect(() => {
+    // runs the filterTimers function
     filterTimers();
   }, [filterParams]);
 
+  // sets the 'name' key to the passed value from search bar
   const filterByWord = (value: any) => {
     setFilterParams({ ...filterParams, name: value });
   };
 
+  // filters the timers by the filter params state
   const filterTimers = () => {
     let filteredResults = timerModel;
+    // if there are filters set
     if (filterParams) {
+      // get each entry/value pair from the filterParams state and run forEach loop ---- filters loop until all params are applied
       Object.entries(filterParams).forEach((filter: any) => {
-        console.log(filter);
-        // console.log(filter);
+        //console.log("FILTER IS", filter);
+        // set the key to the entry's first value
         const key: string = filter[0];
+        // set the value to the entry's second value
         const value: string = filter[1];
+        // filter the timers by if the object filter key is equal to the filter value OR the filter key value includes the value (searchbar keywords)
         let result: any = filteredResults.filter(
           (obj: any) => obj[key] === value || obj[key].includes(value)
         );
-        console.log("result is ", result);
+        //console.log("result is ", result);
+        // set the filteredResults variable to the results of the filter
         filteredResults = result;
       });
+      // set the view to the filtered timers
       setTimerView(filteredResults);
-      filterResults(filteredResults);
     }
   };
 
