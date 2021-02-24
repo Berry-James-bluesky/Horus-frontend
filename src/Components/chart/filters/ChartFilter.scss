@@ -1,7 +1,12 @@
 @import '../../../var';
 
 
-
+.chart-filter-btn {
+  background-color: $h2;
+  border-radius: 5px;
+  padding: 0.7rem;
+  color: #fff;
+}
 
 .chart-filter {
   box-shadow: inset 10px 0 1rem rgba(100, 100, 100, 0.1);
@@ -10,7 +15,6 @@
   background-color: #f8f8f8;
   transform: translateX(-21px);
   width: 16rem;
-
 
   .chart-filter-btn {
     background-color: $h2;
@@ -133,6 +137,16 @@
     transform: translateX(250px);
     background-color: $h2;
     box-shadow: -10px 0 1rem rgba(0,0,0,0.1);
+    z-index: 2;
+    transition: all 0.3s;
+
+    .filter-icon-container {
+      height: 100%;
+    }
+
+    .filters-icon {
+      display: none;
+    }
 
     .chart-filter-btn {
       background-color: #fff;
