@@ -1,50 +1,71 @@
-import React, { useState, useEffect } from 'react';
-import { Total } from './Total';
-import { ProjectSplit } from './ProjectSplit';
-import { getTimers } from '../../API';
-import { ChartStyle } from '../filters/buttons/ChartStyle';
+import React, { useState, useEffect } from "react";
+import { Total } from "./Total";
+import { ProjectSplit } from "./ProjectSplit";
+import { getTimers } from "../../API";
+import { ChartStyle } from "../filters/buttons/ChartStyle";
+import { useSharedChartState } from "../../../pages/Statistics";
+import { useBetween } from "use-between";
 
-interface Props {
-    chartType: string
-    chartName: string
-}
+const useTimerDataState = () => {
+  const [graphStyle, setGraph] = useState("pie");
+  const [timerData, setData]: any = useState("client");
+  const setTimerData = (value: any) => {
+    setData(value);
+  };
+  const setGraphStyle = (value: any) => {
+    setGraph(value);
+  };
+  return { timerData, setTimerData, graphStyle, setGraphStyle };
+};
 
-const CalcContainer = (props: Props) => {
+export const useSharedTimerDataState = () => useBetween(useTimerDataState);
 
-    const [timerData, setTimerData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [graphStyle, setGraphStyle] = useState('pie');
+const CalcContainer = () => {
+  const {
+    chartType,
+    setChartType,
+    chartName,
+    setChartName,
+  } = useSharedChartState();
 
-    useEffect(() => {
-        getTimers()
-            .then((timers: any) => {
-                setTimerData(timers)
-                setLoading(false)
-            })
-    }, []);
+  const {
+    timerData,
+    setTimerData,
+    graphStyle,
+    setGraphStyle,
+  } = useSharedTimerDataState();
+  const [loading, setLoading] = useState(true);
 
-    const getType = (e: any) => {
-        setGraphStyle(e.target.value);
-        console.log(graphStyle);
-    };
+  useEffect(() => {
+    getTimers().then((timers: any) => {
+      setTimerData(timers);
+      setLoading(false);
+    });
+  }, []);
 
-    if(loading) {
-        return(
-            <span>...loading</span>
-        )
-    };
+  useEffect(() => {
+    console.log(chartType);
+  }, [chartType]);
 
-    console.log(`el.${props.chartType}`)
+  const getType = (e: any) => {
+    setGraphStyle(e.target.value);
+    console.log(graphStyle);
+  };
 
-    return(
-        <div className='w-full relative right-0 p-12'>
-            <h1 className='mt-0'>Statistics</h1>
-            <ChartStyle clickEvent={getType} />
-            <ProjectSplit data={timerData} splitBy={`el.${props.chartType}`} splitName={props.chartName} graphType={graphStyle}/>
-            <Total />
-        </div>
-    )
+  if (loading) {
+    return <span>...loading</span>;
+  }
 
-}
+  console.log(`el.${chartType}`);
 
-export default CalcContainer
+  return (
+    <div className="w-full relative right-0 p-12">
+      <h1 className="mt-0">Statistics</h1>
+      <ChartStyle clickEvent={getType} />
+      <ProjectSplit />
+      <Total />
+    </div>
+  );
+};
+
+export default CalcContainer;
