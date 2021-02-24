@@ -1,4 +1,18 @@
-.chart-style-btns::after {
-  content: "";
-  flex: auto;
+//.chart-style-btns::after {
+//  content: "";
+//  justify-content: flex-start;
+//}
+
+@media screen and (max-width: 768px) {
+  .chart-style-btns {
+    justify-content: space-evenly;
+
+    button {
+      width: 5rem;
+    }
+  }
+
+  .calc-container {
+    padding: 0;
+  }
 }

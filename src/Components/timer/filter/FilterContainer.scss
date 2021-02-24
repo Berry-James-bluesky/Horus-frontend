@@ -1,3 +1,5 @@
+@import '../../../var';
+
 .searchbar {
   .MuiInputLabel-formControl {
     transform: translate(0, 15px) scale(1);
@@ -16,11 +18,39 @@
 }
 
 @media screen and (max-width: 768px) {
-  .filter-timer-visible {
+  .filter-timer-visible, .filter-timer-hidden {
+    height: calc(100vh - 50px);
+    position: fixed;
+    right: 0;
+    top: 50px;
+    width: 250px;
     display: flex;
     flex-direction: column;
-    height: fit-content;
     align-items: flex-start;
+    margin: 0;
+    border-left: none;
+    background-color: $h2;
+    color: #fff;
+    transform: translateX(0px);
+    transition: all 0.3s;
+    z-index: 2;
+    box-shadow: -10px 0 1rem rgba(0,0,0,0.1);
+
+    .filter-item {
+      padding-left: 1rem;
+    }
+
+    .filters-header {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 80px;
+
+      h2 {
+        color: #fff;
+        text-shadow: 0 0 1rem rgba(0,0,0,0.2);
+      }
+    }
 
     .checkbox {
       margin: 10px 0 10px 0;
@@ -34,12 +64,21 @@
     }
 
     .searchbar {
-      margin: 0 !important;
+      margin-left: 1rem !important;
+    }
+
+    .checkbox {
+      padding-left: 1rem;
     }
   }
 
+  .filter-timer-visible > button, .filter-timer-hidden > button {
+    margin-left: 1rem !important;
+  }
+
   .filter-timer-hidden {
-    display: none;
+    transform: translateX(250px);
+    transition: all 0.3s;
   }
 }
 

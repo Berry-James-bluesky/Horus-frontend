@@ -32,12 +32,12 @@ const CalcContainer = (props: Props) => {
         return(
             <span>...loading</span>
         )
-    };
+    }
 
     console.log(`el.${props.chartType}`)
 
     return(
-        <div className='w-full relative right-0 p-12'>
+        <div className='w-full relative right-0 p-12 calc-container'>
             <h1 className='mt-0'>Statistics</h1>
             <ChartStyle clickEvent={getType} />
             <ProjectSplit data={timerData} splitBy={`el.${props.chartType}`} splitName={props.chartName} graphType={graphStyle}/>

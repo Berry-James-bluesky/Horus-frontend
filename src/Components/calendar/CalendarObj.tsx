@@ -3,10 +3,6 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import { getTimers } from "../API";
 
-interface timerData {
-    data: any
-}
-
 export const CalendarObj: React.FC = () => {
 
     const [loader, setLoader] = useState(true);

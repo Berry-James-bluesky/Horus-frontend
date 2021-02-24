@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import logo from '../../imgs/logo.svg';
 import { SidebarItem } from "./SidebarItem";
 import { Profile } from './Profile';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
+import Pyramids from '../../imgs/sidebar-topper.jpg';
 import './Sidebar.scss';
 
 /**
@@ -15,6 +16,7 @@ import './Sidebar.scss';
  *
  * @constructor
  */
+
 
 const Sidebar: React.FC = () => {
 
@@ -32,13 +34,14 @@ const Sidebar: React.FC = () => {
         console.log(localStorage.getItem('sidebar-pref'))
     }, [size]);
 
-
-    const handleLinksClick = (e: any) => {
+    const handleLinksClick = () => {
         setShowLinks(!showLinks)
     };
 
-    const linksStatus = showLinks ? 'show-links' : 'hide-links'
+    const linksStatus = showLinks ? 'show-links' : 'hide-links';
+    const burgerIconStatus = showLinks ? 'transform rotate-90' : 'transform rotate-0';
 
+    let currentLocation = useLocation().pathname.split('/')[1];
 
     return(
         <div className={`h-screen bg-gray-50 border-r-2 background-black pl-6 sticky fixed top-0 left-0 w-80 z-10 overflow-hidden sidebar ${size}`}>
@@ -52,11 +55,15 @@ const Sidebar: React.FC = () => {
                         <span className='ml-8 text-primary branding-text'>Horus</span>
                     </span>
                 </Link>
-                <a className={'hamburger-icon md:hidden block'} onClick={handleLinksClick}>
-                        <Icon name={'bars'} />
-                    </a>
+
+                <button className={`hamburger-icon md:hidden block transition duration-300 ${burgerIconStatus}`} onClick={handleLinksClick}>
+                    <Icon name={'bars'} />
+                </button>
+                <span className={'font-sans ml-4 text-gray-200 md:hidden block'}>{currentLocation}</span>
+
             </div>
             <div className={`grid grid-row-6 navlink-container ${linksStatus}`}>
+                <div className={`block md:hidden sidebar-header flex items-center justify-start pl-4`} style={{backgroundImage: `url(${Pyramids})`}}><h2 className={'font-serif font-normal'}>Horus</h2></div>
                 <SidebarItem link='/' iconName='home' label='Dashboard'/>
                 <SidebarItem link='/statistics' iconName='chart pie' label='Statistics'/>
                 <SidebarItem link='/calendar' iconName='calendar alternate outline' label='Calendar'/>

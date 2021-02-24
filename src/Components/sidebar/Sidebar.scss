@@ -120,24 +120,43 @@
 
 @media screen and (max-width: 768px) {
 
+  .navlink-container {
+    transition: all 0.3s;
+  }
+
   .full-size-sidebar {
     position: fixed;
     box-shadow: 0 10px 0.8rem rgba(0,0,0,0.05);
   }
   // Mobile Hamburger Menu
-  .show-links {
+  .show-links, .hide-links {
     position: fixed;
     height: calc(100vh - 50px);
-    width: 200px;
+    width: 250px;
     top: 50px;
     left: 0;
     background-color: $h1;
     border-right: 1px solid #eeeeee;
     display: grid;
-    grid-template-rows: 75px 75px 75px 75px 75px 75px;
+    grid-template-rows: 80px 50px 50px 50px 50px 50px;
     grid-template-columns: 1fr;
     box-shadow: 10px 0 1rem rgba(0, 0, 0, 0.1);
-    animation: sideEntry 0.3s ease-out;
+    transition: all 0.3s;
+    transform: translateX(0px);
+
+    .hide-links {
+      transform: translateX(-250px);
+    }
+
+    .sidebar-header {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      h2 {
+        color: #fff;
+        text-shadow: 0 0 1rem rgba(0,0,0,0.2);
+      }
+    }
 
     .branding-link {
       display: none !important;
@@ -166,7 +185,6 @@
     .sidebar-link:last-child {
       position: absolute;
       bottom: 15px;
-      left: 1rem;
     }
 
     .burger-item {
@@ -181,6 +199,7 @@
   }
 
   .hide-links {
-    display: none !important;
+
+    transform: translateX(-250px);
   }
 }

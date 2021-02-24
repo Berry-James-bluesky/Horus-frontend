@@ -1,5 +1,8 @@
 @import '../../../var';
 
+
+
+
 .chart-filter {
   box-shadow: inset 10px 0 1rem rgba(100, 100, 100, 0.1);
   z-index: 1;
@@ -17,6 +20,7 @@
   }
 
   .filter-header {
+    background-size: 0;
 
     i {
       display: none;
@@ -73,8 +77,9 @@
     padding-top: 1.5rem;
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
+    background: none !important;
 
-    h3 {
+    h2 {
       display: none;
     }
 
@@ -115,4 +120,57 @@
     color: #fff;
   }
 
+}
+
+@media screen and (max-width: 768px) {
+  .chart-filters-mobile-hidden, .chart-filters-mobile-visible {
+    position: fixed;
+    right: 0;
+    top: 50px;
+    padding: 0;
+    margin: 0 !important;
+    height: calc(100vh - 50px);
+    transform: translateX(250px);
+    background-color: $h2;
+    box-shadow: -10px 0 1rem rgba(0,0,0,0.1);
+
+    .chart-filter-btn {
+      background-color: #fff;
+      color: #000;
+      width: 90%;
+      margin: 8px auto;
+    }
+
+    h2 {
+      color: #fff;
+      margin: 0;
+      text-shadow: 0 0 1rem rgba(0,0,0,0.2);
+    }
+
+    .filter-header {
+      width: 100%;
+      height: 80px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 1rem;
+
+
+    }
+  }
+
+  .chart-filters-mobile-visible {
+    transform: translateX(0px);
+  }
+
+  .filter-toggle-button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 99;
+    font-size: 1.2rem;
+  }
 }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Filter } from "./Filter";
 import { useBetween } from "use-between";
-import { Checkbox, Button } from "semantic-ui-react";
+import { Checkbox, Button, Icon } from "semantic-ui-react";
 import { useSharedTimerState } from "../TimerContainer";
 import { TextField } from "@material-ui/core";
 import { useSharedFilterState } from "./functions/sharedFilterState";
+import Pyramids from '../../../imgs/sidebar-topper.jpg';
 import "./FilterContainer.scss";
 
 /**
@@ -15,6 +16,16 @@ import "./FilterContainer.scss";
 export const FilterContainer = () => {
   const { filterParams, setFilterParams } = useSharedFilterState();
   const { timerView, setTimerView, timerModel } = useSharedTimerState();
+
+  // set mobile-toggle state
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleIsVisible = (e: React.MouseEvent) => {
+    setIsVisible(!isVisible)
+  }
+
+  const barStatus = isVisible ? 'filter-timer-visible' : 'filter-timer-hidden';
+  const btnStatus = isVisible ? 'text-secondary' : 'text-black';
 
   // runs every time the filterParams state changes
   useEffect(() => {
@@ -53,25 +64,29 @@ export const FilterContainer = () => {
   };
 
   return (
-    <div className="w-full h-20 bg-white flex justify-start flex-row items-center mb-12 p-6 border-l-8 border-secondary mt-12">
-      <Checkbox label="Active" />
-      <TextField
-        className="searchbar"
-        label="Search Tasks"
-        onKeyUp={(e: any) => {
-          filterByWord(e.target.value.toLowerCase());
-        }}
-      />
-      <Filter isType="assignedTo" filter={filterTimers} />
-      <Filter isType="client" filter={filterTimers} />
-      <Button
-        onClick={() => {
-          setTimerView(timerModel);
-          setFilterParams([]);
-        }}
-      >
-        Reset Filters
-      </Button>
-    </div>
+    <>
+      <button onClick={handleIsVisible} className={`static fixed z-50 right-4 top-4 md:hidden text-white rounded-md text-xl ${btnStatus}`}><Icon name={'options'} /></button>
+      <div className={`w-full h-20 bg-white flex justify-start flex-row items-center mb-12 md:p-6 border-l-8 border-secondary mt-12 ${barStatus}`}>
+        <div className={'block md:hidden w-full flex items-center justify-start pl-4 filters-header'} style={{backgroundImage: `url(${Pyramids})`}}><h2>Filters</h2></div>
+        <Checkbox label="Active" />
+        <TextField
+          className="searchbar"
+          label="Search Tasks"
+          onKeyUp={(e: any) => {
+            filterByWord(e.target.value.toLowerCase());
+          }}
+        />
+        <Filter isType="assignedTo" filter={filterTimers} />
+        <Filter isType="client" filter={filterTimers} />
+        <Button
+          onClick={() => {
+            setTimerView(timerModel);
+            setFilterParams([]);
+          }}
+        >
+          Reset Filters
+        </Button>
+      </div>
+    </>
   );
 };

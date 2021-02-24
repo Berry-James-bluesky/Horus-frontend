@@ -5,6 +5,31 @@
   width: auto !important;
 }
 
+.timer-full {
+  padding: 1.5rem;
+}
+
+.card-item {
+
+  .clock-wrapper {
+    width: calc(100% + 30px);
+    background-color: $h1;
+    box-shadow: 0 0 1rem rgba(226,110,92,0.4);
+    transform: translateX(-15px);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 54px;
+    filter: opacity(0.9);
+    backdrop-filter: blur(10px);
+
+    .clock {
+      color: #f8f8f8;
+      font-family: 'LCD';
+      font-size: 2rem;
+    }
+  }
+}
+
 .list-item {
   display: grid !important;
   grid-template-columns: 1fr 1fr 1fr 1fr !important;
@@ -31,3 +56,4 @@
 
   }
 }
+
