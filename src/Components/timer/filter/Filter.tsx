@@ -112,11 +112,22 @@ export const Filter: React.FC<Props> = (props: Props) => {
   return (
     <div className="w-60 ml-6 mr-6 filter-item">
       <Select
-        placeholder={filterType}
+        placeholder={
+          filterType === "assignedTo"
+            ? "User"
+            : filterType === "client"
+            ? "Client"
+            : filterType
+        }
         options={filterOptions}
+        isClearable={true}
         // on change the filter params are set to the previous filters + the filter type as a key and the event value as the value
         onChange={(e: any) => {
-          setFilterParams({ ...filterParams, [filterType]: e.value });
+          if (e !== null) {
+            setFilterParams({ ...filterParams, [filterType]: e.value });
+          } else {
+            setFilterParams({ ...filterParams, [filterType]: "" });
+          }
         }}
       />
     </div>

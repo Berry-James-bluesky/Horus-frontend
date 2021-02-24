@@ -123,7 +123,7 @@ const TimerCreate = () => {
           onChange={(e: any) => {
             setIsBillable((initialValue: any) => !initialValue);
           }}
-          inputProps={{ "aria-label": "primary checkbox" }}
+          inputprops={{ "aria-label": "primary checkbox" }}
         />
       </Form.Field>
       <AddButton

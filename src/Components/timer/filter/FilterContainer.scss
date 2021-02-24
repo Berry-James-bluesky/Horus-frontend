@@ -17,6 +17,10 @@
   padding: 0 0 0 20px !important;
 }
 
+.css-gga68z-MuiInputBase-input {
+  padding: 0 10px !important;
+}
+
 @media screen and (max-width: 768px) {
   .filter-timer-visible, .filter-timer-hidden {
     height: calc(100vh - 50px);
@@ -81,4 +85,3 @@
     transition: all 0.3s;
   }
 }
-
