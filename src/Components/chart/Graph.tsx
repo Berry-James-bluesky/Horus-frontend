@@ -10,9 +10,9 @@ import {
   HorizontalBar,
   Scatter,
 } from "react-chartjs-2";
-import { useSharedTimerDataState } from "./Calculations/CalcContainer";
+import { useSharedTimerDataState } from "../chart/functions/sharedTimerDataState";
 import { useSharedFetchedData } from "./Calculations/ProjectSplit";
-import { useSharedChartState } from "../../pages/Statistics";
+import { useSharedChartState } from "./functions/sharedChartState";
 
 /**
  * Generates a Pie graph out of supplied data

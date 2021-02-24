@@ -3,20 +3,7 @@ import { ChartFilter } from "../Components/chart/filters/ChartFilter";
 import "./Statistics.scss";
 import CalcContainer from "../Components/chart/Calculations/CalcContainer";
 import { useBetween } from "use-between";
-
-const useChartState = () => {
-  const [chartType, setType] = useState("client");
-  const [chartName, setName] = useState("All Clients");
-  const setChartType = (value: any) => {
-    setType(value);
-  };
-  const setChartName = (value: any) => {
-    setName(value);
-  };
-  return { chartType, setChartType, chartName, setChartName };
-};
-
-export const useSharedChartState = () => useBetween(useChartState);
+import { useSharedChartState } from "../Components/chart/functions/sharedChartState";
 
 export const Statistics: React.FC = () => {
   const {

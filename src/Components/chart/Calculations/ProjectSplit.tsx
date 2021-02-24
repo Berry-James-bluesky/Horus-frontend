@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Graph from "../Graph";
 import { differenceInSeconds } from "date-fns";
-import { useSharedChartState } from "../../../pages/Statistics";
-import { useSharedTimerDataState } from "./CalcContainer";
+import { useSharedChartState } from "../functions/sharedChartState";
+import { useSharedTimerDataState } from "../functions/sharedTimerDataState";
 import { useBetween } from "use-between";
 
 /**

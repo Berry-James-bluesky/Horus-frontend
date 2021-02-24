@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChartFilterItem } from "./ChartFilterItem";
 import { Icon } from "semantic-ui-react";
 import "./ChartFilter.scss";
-import { useSharedChartState } from "../../../pages/Statistics";
+import { useSharedChartState } from "../functions/sharedChartState";
 
 /**
  * Component for filtering displayed chart results

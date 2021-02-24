@@ -3,22 +3,9 @@ import { Total } from "./Total";
 import { ProjectSplit } from "./ProjectSplit";
 import { getTimers } from "../../API";
 import { ChartStyle } from "../filters/buttons/ChartStyle";
-import { useSharedChartState } from "../../../pages/Statistics";
+import { useSharedChartState } from "../functions/sharedChartState";
+import { useSharedTimerDataState } from "../functions/sharedTimerDataState";
 import { useBetween } from "use-between";
-
-const useTimerDataState = () => {
-  const [graphStyle, setGraph] = useState("pie");
-  const [timerData, setData]: any = useState("client");
-  const setTimerData = (value: any) => {
-    setData(value);
-  };
-  const setGraphStyle = (value: any) => {
-    setGraph(value);
-  };
-  return { timerData, setTimerData, graphStyle, setGraphStyle };
-};
-
-export const useSharedTimerDataState = () => useBetween(useTimerDataState);
 
 const CalcContainer = () => {
   const {
