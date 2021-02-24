@@ -13,7 +13,7 @@ import { useSharedTimeState } from "./functions/sharedTimeState";
  * @constructor
  */
 
-const TimerCreate = () => {
+const TimerCreate = (props: { current: boolean }) => {
   const [timerData, setTimerData] = useState<ITimer | any>({});
   /** Data taken from form fields and PUT to the backend */
   const [isBillable, setIsBillable] = useState(false);
@@ -64,6 +64,7 @@ const TimerCreate = () => {
   const handleTimerAdd = (): void => {
     if (!(timerData.name || timerData.assignedTo)) {
       setNotifyMsg("Please enter all fields");
+      console.log("enter all fields");
       setIconState("close");
       setShowNotify(true);
       setTimeout(
@@ -72,7 +73,7 @@ const TimerCreate = () => {
         }.bind(this),
         4000
       );
-    } else {
+    } else if (!props.current) {
       if (Date.parse(startTime) < Date.parse(endTime)) {
         setTimerData({
           ...timerData,
@@ -80,6 +81,7 @@ const TimerCreate = () => {
           endTime: endTime,
         });
         setNotifyMsg("Timer successfully added");
+        console.log("successfully added");
         setIconState("check");
         setShowNotify(true);
         setTimeout(
@@ -88,15 +90,15 @@ const TimerCreate = () => {
           }.bind(this),
           4000
         );
-
-        setShowNotify(true);
-        setTimeout(
-          function () {
-            setShowNotify(false);
-          }.bind(this),
-          4000
-        );
+      } else {
+        console.log("Start date must be before end date");
       }
+    } else {
+      const currentTime = new Date();
+      setTimerData({
+        ...timerData,
+        startTime: currentTime,
+      });
     }
   };
 
@@ -113,9 +115,7 @@ const TimerCreate = () => {
           <Input type="text" onChange={handleTimerAssigned} />
         </div>
 
-        <div>
-          <TimeTracker />
-        </div>
+        <div>{!props.current ? <TimeTracker /> : null}</div>
 
         <Form.Field label="Billable?" />
         <Checkbox
