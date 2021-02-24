@@ -55,7 +55,7 @@ export const ChartFilter = (props: Props) => {
       >
         <div className="pt-4 hidden md:block">
           <button
-            className="arrow-btn md:block hidden"
+            className="arrow-btn md:inline hidden"
             onClick={() => {
               active === "chart-filters-active"
                 ? setActive("chart-filters-hidden")
