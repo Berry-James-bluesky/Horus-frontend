@@ -34,8 +34,8 @@ const CalcContainer = () => {
     console.log(chartType);
   }, [chartType]);
 
-  const getType = (e: any) => {
-    setGraphStyle(e.target.value);
+  const getType = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setGraphStyle(e.currentTarget.value);
     console.log(graphStyle);
   };
 

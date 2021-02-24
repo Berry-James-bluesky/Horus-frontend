@@ -20,31 +20,17 @@ interface Props {
 export const ChartFilter = (props: Props) => {
   const [active, setActive] = useState("chart-filters-active");
 
-  const {
-    chartType,
-    setChartType,
-    chartName,
-    setChartName,
-  } = useSharedChartState();
-
   const chartTypes = [
     { name: "All Users", type: "assignedTo", icon: "user" },
     { name: "All Clients", type: "client", icon: "briefcase" },
     { name: "All Projects", type: "project", icon: "lightbulb" },
   ];
 
-  const chartSet = (e: any) => {
-    setChartType(e.target.value);
-    setChartName(e.target.innerText);
-    console.log(chartType);
-  };
-
   const filters = chartTypes.map((filter) => (
     <ChartFilterItem
       buttonName={filter.name}
       value={filter.type}
       iconName={filter.icon}
-      clickEvent={chartSet}
     />
   ));
 
