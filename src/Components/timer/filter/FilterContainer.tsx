@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Filter } from "./Filter";
 import { useBetween } from "use-between";
 import { Checkbox, Button } from "semantic-ui-react";
@@ -16,126 +16,62 @@ export const FilterContainer = () => {
   const { filterParams, setFilterParams } = useSharedFilterState();
   const { timerView, setTimerView, timerModel } = useSharedTimerState();
 
-  // Mobile toggle logic
-  const [showTimers, setShowTimers] = useState(false);
-  // Invert showTimers state
-  const handleShowTimers = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setShowTimers(!showTimers)
+  // runs every time the filterParams state changes
+  useEffect(() => {
+    // runs the filterTimers function
+    filterTimers();
+  }, [filterParams]);
+
+  // sets the 'name' key to the passed value from search bar
+  const filterByWord = (value: any) => {
+    setFilterParams({ ...filterParams, name: value });
   };
 
-  const barStatus = showTimers ? "filter-timer-visible" : 'filter-timer-hidden';
-  const btnStatus = showTimers ? 'bg-secondary' : 'bg-gray-200';
-
-  const filterTimers = (key: any, input: any) => {
-    let filterArray: any = [];
-    let result: any = "";
-    let timerData: any = [];
-    // if the input is user (user dropdown)
-    if (input === "user") {
-      let timers = timerModel;
-      filterArray = filterParams;
-      filterArray["assignedTo"] = key;
-      // set state of filter to include user param
-      setFilterParams(filterArray);
-      // if the filter has a client param
-      if (filterParams.client) {
-        // set timers to only the timers that are for that client
-        timers = timerModel.filter(
-          (obj: any) => obj.client === filterParams.client
+  // filters the timers by the filter params state
+  const filterTimers = () => {
+    let filteredResults = timerModel;
+    // if there are filters set
+    if (filterParams) {
+      // get each entry/value pair from the filterParams state and run forEach loop ---- filters loop until all params are applied
+      Object.entries(filterParams).forEach((filter: any) => {
+        //console.log("FILTER IS", filter);
+        // set the key to the entry's first value
+        const key: string = filter[0];
+        // set the value to the entry's second value
+        const value: string = filter[1];
+        // filter the timers by if the object filter key is equal to the filter value OR the filter key value includes the value (searchbar keywords)
+        let result: any = filteredResults.filter(
+          (obj: any) => obj[key] === value || obj[key].includes(value)
         );
-        console.log("client filter is", timers);
-      }
-      // set result to timers that either match the key user OR the array of users includes the timers.user value
-      result = timers.filter(
-        (obj: any) => obj.assignedTo === key || key.includes(obj.assignedTo)
-      );
+        //console.log("result is ", result);
+        // set the filteredResults variable to the results of the filter
+        filteredResults = result;
+      });
+      // set the view to the filtered timers
+      setTimerView(filteredResults);
     }
-    // if the input is 'client' (client dropdown)
-    if (input === "client") {
-      // set timers to the timers in the model
-      filterArray = filterParams;
-      let timers = timerModel;
-      filterArray["client"] = key;
-      setFilterParams(filterArray);
-      // if there is a user filter param
-      if (filterParams.assignedTo) {
-        // set timers to timers where the user is equal to the filter user param
-        timers = timerModel.filter(
-          (obj: any) => obj.assignedTo === filterParams.assignedTo
-        );
-      }
-      // set the result to the timer (already filtered by other params) that has the input client value
-      result = timers.filter((obj: any) => obj.client === key);
-    }
-    // if the input is a keyword (searchbar)
-    if (input === "keyword") {
-      // set timers to the timers in the model
-      let timers = timerModel;
-      // if there is a user param and a client param in the filter state
-      if (filterParams.assignedTo && filterParams.client) {
-        // set timers to timers where the 'client' value and the 'user' value are equal to the filter params
-        timers = timerModel.filter(
-          (obj: any) =>
-            (obj.client === filterParams.client ||
-              filterParams.client.includes(obj.client)) &&
-            (obj.assignedTo === filterParams.assignedTo ||
-              filterParams.assignedTo.includes(obj.assignedTo))
-        );
-      }
-      // else if the filter only has a user filter
-      else if (filterParams.assignedTo) {
-        // find timers that match the user filter param
-        timers = timerModel.filter(
-          (obj: any) =>
-            obj.assignedTo === filterParams.assignedTo ||
-            filterParams.assignedTo.includes(obj.assignedTo)
-        );
-      }
-      // else if there is only a client param
-      else if (filterParams.client) {
-        // set timers to the timers that match the client filter param
-        timers = timerModel.filter(
-          (obj: any) => obj.client === filterParams.client
-        );
-      }
-
-      // set result to all the timers (already filtered by user dropdown/client value) that include the search keyword/letters
-      result = timers.filter((obj: any) =>
-        obj.name.toLowerCase().includes(key)
-      );
-    }
-    // set the todos in the formData to the filtered todos
-    timerData = result;
-    console.log("TIMER DATA", timerData);
-    // console.log('result is', result);
-
-    // set the view state to the formData array
-    setTimerView(timerData);
   };
 
   return (
-      <>
-        <button onClick={handleShowTimers} className={`block md:hidden text-white pl-6 pr-6 pt-2 pb-2 rounded-md text-md ${btnStatus}`}>Filters</button>
-        <div className={`w-full h-20 bg-white flex justify-start flex-row items-center mb-12 p-6 border-l-8 border-secondary mt-12 ${barStatus}`}>
-          <Checkbox label="Active" />
-          <TextField
-            className="searchbar"
-            label="Search Tasks"
-            onKeyUp={(e: any) => {
-              filterTimers(e.target.value.toLowerCase(), "keyword");
-            }}
-          />
-          <Filter isType="User" filter={filterTimers} />
-          <Filter isType="Client" filter={filterTimers} />
-          <Button
-            onClick={() => {
-              setTimerView(timerModel);
-              setFilterParams([]);
-            }}
-          >
-            Reset Filters
-          </Button>
-        </div>
-      </>
+    <div className="w-full h-20 bg-white flex justify-start flex-row items-center mb-12 p-6 border-l-8 border-secondary mt-12">
+      <Checkbox label="Active" />
+      <TextField
+        className="searchbar"
+        label="Search Tasks"
+        onKeyUp={(e: any) => {
+          filterByWord(e.target.value.toLowerCase());
+        }}
+      />
+      <Filter isType="assignedTo" filter={filterTimers} />
+      <Filter isType="client" filter={filterTimers} />
+      <Button
+        onClick={() => {
+          setTimerView(timerModel);
+          setFilterParams([]);
+        }}
+      >
+        Reset Filters
+      </Button>
+    </div>
   );
 };
