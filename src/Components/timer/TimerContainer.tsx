@@ -73,7 +73,7 @@ const TimerContainer: React.FC = () => {
 
         return (
             <>
-                <Select options={styleOptions} onChange={handleChange} className='w-50 float-right m-8 mt-0'/>
+                <Select options={styleOptions} onChange={handleChange} className='w-48 float-right m-8 mt-0'/>
                 <div className={`timer-container ${styleValue}-container`}>
                     {timerView.map((data: any) =>
                         <TimerObj

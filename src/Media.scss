@@ -1,0 +1,91 @@
+@import './var';
+
+@media screen and (max-width: 768px) {
+  // NOTIFY
+  .notify {
+    z-index: 999;
+  }
+
+  // MAIN PAGE CONTENT
+  .main-content {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100vw;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow-x: hidden;
+  }
+
+  // NAVIGATION
+  // Move sidebar to top of screen
+  .sidebar {
+    min-width: 100vw;
+    height: 50px;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #f2f2f2;
+
+    // Hide the small-large toggler
+    .sidebar-toggle-container {
+      display: none;
+    }
+
+    // Nav branding
+    .branding-container {
+      margin: 0;
+      padding: 0px;
+      width: 15%;
+
+      .hamburger-icon {
+        display: flex;
+        color: $h1;
+        font-size: 1.5rem;
+      }
+
+      a {
+        span {
+          // Adjust size of Horus logo
+          .horus-logo {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            top: 10px;
+            filter: contrast(20%);
+          }
+
+          // Hide the 'HORUS' branding text
+          span {
+            display: none;
+          }
+        }
+      }
+
+    }
+
+
+    // User profile object
+    .user-profile {
+      display: none;
+    }
+  }
+
+  // DASHBOARD
+  // Add margin to the top of timer dashboard to push buttons down
+  .timer-dashboard {
+    margin-top: 30px;
+  }
+  // Reduce number of timer container columns
+  .card-container {
+    grid-template-columns: 1fr 1fr !important;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+
+}

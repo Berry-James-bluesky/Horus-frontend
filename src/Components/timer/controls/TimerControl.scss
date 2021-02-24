@@ -1,0 +1,31 @@
+@import '../../../var';
+
+// Makes mobile-specific menus only do anything at lower screen sizes
+@media screen and (max-width: 768px) {
+
+
+  .add-timer-hidden {
+    display: none;
+  }
+
+  .add-timer-visible {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100vw;
+    height: fit-content;
+    background-color: #f2f2f2;
+    padding: 10px 5px 5px;
+    margin: 10px 0 0 0;
+
+    .field {
+      flex-direction: column;
+      align-items: flex-start;
+
+      div {
+        margin: 5px 0 5px 0;
+      }
+    }
+  }
+
+}

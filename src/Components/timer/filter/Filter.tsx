@@ -106,7 +106,7 @@ export const Filter: React.FC<Props> = (props: Props) => {
   console.log("timerView is", timerView);
 
   return (
-    <div className="w-60 ml-6 mr-6">
+    <div className="w-60 ml-6 mr-6 filter-item">
       <Select
         placeholder={filterType}
         options={filterOptions}

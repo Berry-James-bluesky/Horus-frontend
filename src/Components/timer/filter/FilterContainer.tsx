@@ -16,6 +16,16 @@ export const FilterContainer = () => {
   const { filterParams, setFilterParams } = useSharedFilterState();
   const { timerView, setTimerView, timerModel } = useSharedTimerState();
 
+  // Mobile toggle logic
+  const [showTimers, setShowTimers] = useState(false);
+  // Invert showTimers state
+  const handleShowTimers = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setShowTimers(!showTimers)
+  };
+
+  const barStatus = showTimers ? "filter-timer-visible" : 'filter-timer-hidden';
+  const btnStatus = showTimers ? 'bg-secondary' : 'bg-gray-200';
+
   const filterTimers = (key: any, input: any) => {
     let filterArray: any = [];
     let result: any = "";
@@ -104,25 +114,28 @@ export const FilterContainer = () => {
   };
 
   return (
-    <div className="w-full h-20 bg-white flex justify-start flex-row items-center mb-12 p-6 border-l-8 border-secondary mt-12">
-      <Checkbox label="Active" />
-      <TextField
-        className="searchbar"
-        label="Search Tasks"
-        onKeyUp={(e: any) => {
-          filterTimers(e.target.value.toLowerCase(), "keyword");
-        }}
-      />
-      <Filter isType="User" filter={filterTimers} />
-      <Filter isType="Client" filter={filterTimers} />
-      <Button
-        onClick={() => {
-          setTimerView(timerModel);
-          setFilterParams([]);
-        }}
-      >
-        Reset Filters
-      </Button>
-    </div>
+      <>
+        <button onClick={handleShowTimers} className={`block md:hidden text-white pl-6 pr-6 pt-2 pb-2 rounded-md text-md ${btnStatus}`}>Filters</button>
+        <div className={`w-full h-20 bg-white flex justify-start flex-row items-center mb-12 p-6 border-l-8 border-secondary mt-12 ${barStatus}`}>
+          <Checkbox label="Active" />
+          <TextField
+            className="searchbar"
+            label="Search Tasks"
+            onKeyUp={(e: any) => {
+              filterTimers(e.target.value.toLowerCase(), "keyword");
+            }}
+          />
+          <Filter isType="User" filter={filterTimers} />
+          <Filter isType="Client" filter={filterTimers} />
+          <Button
+            onClick={() => {
+              setTimerView(timerModel);
+              setFilterParams([]);
+            }}
+          >
+            Reset Filters
+          </Button>
+        </div>
+      </>
   );
 };

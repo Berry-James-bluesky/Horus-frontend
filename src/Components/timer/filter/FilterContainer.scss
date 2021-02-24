@@ -14,3 +14,32 @@
   transform: translate(0, 1.5px) scale(0.75) !important;
   padding: 0 0 0 20px !important;
 }
+
+@media screen and (max-width: 768px) {
+  .filter-timer-visible {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    align-items: flex-start;
+
+    .checkbox {
+      margin: 10px 0 10px 0;
+    }
+
+    .filter-item {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .searchbar {
+      margin: 0 !important;
+    }
+  }
+
+  .filter-timer-hidden {
+    display: none;
+  }
+}
+

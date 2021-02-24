@@ -11,11 +11,11 @@
 
 .card-container {
     grid-template-rows: auto !important;
-    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 
 .list-container {
     grid-template-rows: auto !important;
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
 }
