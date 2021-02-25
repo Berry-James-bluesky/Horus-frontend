@@ -1,9 +1,7 @@
-@import '../../../var';
+@import "../../../var";
 
 // Makes mobile-specific menus only do anything at lower screen sizes
 @media screen and (max-width: 768px) {
-
-
   .add-timer-hidden {
     display: none;
   }
@@ -27,5 +25,15 @@
       }
     }
   }
+}
 
+.switch-btn {
+  position: absolute !important;
+  top: 10px;
+  color: $h1 !important;
+  font-weight: bold !important;
+}
+.switch-btn:focus {
+  border: none !important;
+  outline: none !important;
 }
