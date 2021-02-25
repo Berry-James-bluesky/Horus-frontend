@@ -4,6 +4,9 @@ import AddButton from "./AddButton";
 import { Notify } from "../../notify/Notify";
 import { TimeTracker } from "./TimeTracker";
 import { useSharedTimeState } from "./functions/sharedTimeState";
+import { useSharedTimerState } from "../TimerContainer";
+import { postTimer, getTimers } from "./../../API";
+import { useSharedTimerDataState } from "../../chart/functions/sharedTimerDataState";
 
 /**
  * [INCOMPLETE - no data is sent to backend and no new timer object is created.  Data is currently being set to state timerData and console logged for proof of concept.  Time tracker does not function correctly and no time data is logged)
@@ -13,9 +16,17 @@ import { useSharedTimeState } from "./functions/sharedTimeState";
  * @constructor
  */
 
-const TimerCreate = () => {
-  const [timerData, setTimerData] = useState<ITimer | any>({});
+const TimerCreate = (props: { current: boolean }) => {
+  const {
+    timerModel,
+    setTimerModel,
+    timerView,
+    setTimerView,
+  } = useSharedTimerState();
+  const [timerData, setTimerData] = useState<ITimer | any>(null);
   /** Data taken from form fields and PUT to the backend */
+  const [name, setName]: any = useState(null);
+  const [user, setUser]: any = useState(null);
   const [isBillable, setIsBillable] = useState(false);
   /** Billable checkbox value (as boolean) */
   const [showNotify, setShowNotify] = useState(false);
@@ -31,39 +42,32 @@ const TimerCreate = () => {
   // shared state of time tracker component
 
   useEffect(() => {
-    console.log("TIME VALUE:", startTime);
-  }, [startTime]);
-
-  useEffect(() => {
-    console.log(timerData);
+    if (timerData !== null) {
+      postTimer(timerData).then((timer) => console.log(timer));
+    }
   }, [timerData]);
 
-  useEffect(() => {
-    setTimerData({
-      ...timerData,
-      billable: isBillable,
-    });
-  }, [isBillable]);
+  // useEffect(() => {
+  //   setTimerData({
+  //     ...timerData,
+  //     billable: isBillable,
+  //   });
+  // }, [isBillable]);
 
   const handleTimerName = (e: React.FormEvent<HTMLInputElement>): void => {
-    setTimerData({
-      ...timerData,
-      name: e.currentTarget.value,
-    });
-    console.log(timerData);
+    setName(e.currentTarget.value);
+    console.log(name);
   };
 
   const handleTimerAssigned = (e: React.FormEvent<HTMLInputElement>): void => {
-    setTimerData({
-      ...timerData,
-      assignedTo: e.currentTarget.value,
-    });
-    console.log(timerData);
+    setUser(e.currentTarget.value);
+    console.log(user);
   };
 
-  const handleTimerAdd = (): void => {
-    if (!(timerData.name || timerData.assignedTo)) {
+  const handleTimerAdd = () => {
+    if (!(name || user)) {
       setNotifyMsg("Please enter all fields");
+      console.log("enter all fields");
       setIconState("close");
       setShowNotify(true);
       setTimeout(
@@ -72,14 +76,17 @@ const TimerCreate = () => {
         }.bind(this),
         4000
       );
-    } else {
+    } else if (!props.current) {
       if (Date.parse(startTime) < Date.parse(endTime)) {
         setTimerData({
-          ...timerData,
+          name: name,
+          assignedTo: user,
           startTime: startTime,
           endTime: endTime,
+          isBillable: isBillable,
         });
         setNotifyMsg("Timer successfully added");
+        console.log("successfully added");
         setIconState("check");
         setShowNotify(true);
         setTimeout(
@@ -88,15 +95,17 @@ const TimerCreate = () => {
           }.bind(this),
           4000
         );
-
-        setShowNotify(true);
-        setTimeout(
-          function () {
-            setShowNotify(false);
-          }.bind(this),
-          4000
-        );
+      } else {
+        console.log("Start date must be before end date");
       }
+    } else {
+      const currentTime = new Date();
+      setTimerData({
+        name: name,
+        assignedTo: user,
+        startTime: currentTime,
+        isBillable: isBillable,
+      });
     }
   };
 
@@ -113,9 +122,7 @@ const TimerCreate = () => {
           <Input type="text" onChange={handleTimerAssigned} />
         </div>
 
-        <div>
-          <TimeTracker />
-        </div>
+        <div>{!props.current ? <TimeTracker /> : null}</div>
 
         <Form.Field label="Billable?" />
         <Checkbox
