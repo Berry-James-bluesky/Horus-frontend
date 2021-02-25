@@ -1,13 +1,13 @@
 import axios, { AxiosResponse } from 'axios';
-import test from '../test.json';
 
-const baseURL: string = "./test.json";
+const baseURL: string = "http://my-json-server.typicode.com/Berry-James/horus-data/data";
 
 export const getTimers = async (): Promise<AxiosResponse<ApiDataType>> => {
     try {
         const timers: AxiosResponse<ApiDataType> = await axios.get(
             baseURL
         )
+        console.log(baseURL)
         return timers
     } catch (error) {
         throw new Error(error)
