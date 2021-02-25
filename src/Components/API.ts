@@ -1,16 +1,7 @@
 import axios, { AxiosResponse } from "axios";
-import test from "../test.json";
 
-const baseURL: string = "./test.json";
-
-export const getTimers = async (): Promise<AxiosResponse<Array<{}>>> => {
-  try {
-    const timers: AxiosResponse<Array<{}>> = await axios.get(baseURL);
-    return timers;
-  } catch (error) {
-    throw new Error(error);
-  }
-};
+const baseURL: string =
+  "http://my-json-server.typicode.com/Berry-James/horus-data/data";
 
 export const postTimer = async (
   value: any
@@ -21,6 +12,15 @@ export const postTimer = async (
   } catch (error) {
     //throw new Error(error);
     return error;
+  }
+};
+export const getTimers = async (): Promise<AxiosResponse<ApiDataType>> => {
+  try {
+    const timers: AxiosResponse<ApiDataType> = await axios.get(baseURL);
+    console.log(baseURL);
+    return timers;
+  } catch (error) {
+    throw new Error(error);
   }
 };
 
