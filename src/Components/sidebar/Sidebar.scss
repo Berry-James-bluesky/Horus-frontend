@@ -9,6 +9,15 @@
   }
 }
 
+@keyframes sideEntry {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
 .sidebar {
   transition: 0.5s;
 }
@@ -64,6 +73,8 @@
     outline: none;
   }
 
+
+
   .branding-container {
     display: flex;
     justify-content: center;
@@ -103,6 +114,92 @@
   }
 
   i {
-    color: #fff;
+    color: #f2f2f2;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .navlink-container {
+    transition: all 0.3s;
+  }
+
+  .full-size-sidebar {
+    position: fixed;
+    box-shadow: 0 10px 0.8rem rgba(0,0,0,0.05);
+  }
+  // Mobile Hamburger Menu
+  .show-links, .hide-links {
+    position: fixed;
+    height: calc(100vh - 50px);
+    width: 250px;
+    top: 50px;
+    left: 0;
+    background-color: $h1;
+    border-right: 1px solid #eeeeee;
+    display: grid;
+    grid-template-rows: 80px 50px 50px 50px 50px 50px;
+    grid-template-columns: 1fr;
+    box-shadow: 10px 0 1rem rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    transform: translateX(0px);
+
+    .hide-links {
+      transform: translateX(-250px);
+    }
+
+    .sidebar-header {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      h2 {
+        color: #fff;
+        text-shadow: 0 0 1rem rgba(0,0,0,0.2);
+      }
+    }
+
+    .branding-link {
+      display: none !important;
+    }
+
+    .sidebar-link {
+      padding: 0 1rem 0 1rem;
+    }
+
+    .sidebar-link, .active-link {
+      height: 50px;
+      justify-content: flex-start;
+      color: #fff;
+      border-bottom: none;
+    }
+
+    .active-link {
+      background: #fff;
+      width: 100%;
+
+      .burger-item {
+        color: #000 !important;
+      }
+    }
+
+    .sidebar-link:last-child {
+      position: absolute;
+      bottom: 15px;
+    }
+
+    .burger-item {
+      animation: none;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color: #fff;
+    }
+
+  }
+
+  .hide-links {
+
+    transform: translateX(-250px);
   }
 }

@@ -3,6 +3,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 @import "./var";
+@import './Media';
+
+@font-face {
+  font-family: 'LCD';
+  src: local('MyFont'), url(./fonts/DS-DIGI.TTF) format('woff');
+}
 
 h1,
 h2,
@@ -51,3 +57,15 @@ p {
   transform: translate(0, 1.5px) scale(0.75) !important;
 }
 
+@keyframes contentEntry {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.main-content {
+  animation: contentEntry 0.5s linear;
+}

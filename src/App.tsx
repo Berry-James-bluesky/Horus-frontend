@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 import { Statistics } from './pages/Statistics';
 import { Dashboard } from './pages/Dashboard';
 import { Settings } from './pages/Settings';
@@ -11,6 +11,9 @@ import Sidebar from './Components/sidebar/Sidebar';
 
 // @ts-ignore
 const App: React.FC = ({ isVisible }) => {
+
+
+
 
   return (
       <BrowserRouter>
