@@ -4,6 +4,7 @@ import "./TimerContainer.scss";
 import { getTimers } from "../API";
 import Select from "react-select";
 import { useBetween } from "use-between";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 /**
  *
@@ -34,7 +35,8 @@ export const useSharedTimerState = () => useBetween(useTimerState);
 
 const TimerContainer: React.FC = () => {
   // set states
-  const [styleValue, setStyleValue] = useState("list");
+  const [styleValue, setStyleValue] = useState("card");
+  const [loading, setLoading] = useState(true);
   // const [fetchedTimers, setFetchedTimers] = useState<Array<timerDataType>>([]);
   const {
     timerModel,
@@ -53,6 +55,7 @@ const TimerContainer: React.FC = () => {
       // @ts-ignore
       setTimerModel(timers.data);
       console.log(timerModel);
+      setLoading(false);
     });
   }, []);
 
@@ -77,6 +80,14 @@ const TimerContainer: React.FC = () => {
     setStyleValue(e.value);
   };
 
+  if (loading) {
+    return (
+      <div className="h-full">
+        <CircularProgress className="m-auto absolute left-0 right-0 top-0 bottom-0" />
+      </div>
+    );
+  }
+
   return (
     <>
       <Select
@@ -85,16 +96,18 @@ const TimerContainer: React.FC = () => {
         className="w-64 float-right m-8 mt-0"
       />
       <div className={`timer-container ${styleValue}-container`}>
-        {timerView.map((data: any) => (
-          <TimerObj
-            key={data.name}
-            timerName={data.name}
-            timerClient={data.client}
-            timerProject={data.project}
-            timerStyle={styleValue}
-            timerDate={data.time}
-          />
-        ))}
+        {timerView
+          ? timerView.map((data: any) => (
+              <TimerObj
+                key={data.name}
+                timerName={data.name}
+                timerClient={data.client}
+                timerProject={data.project}
+                timerStyle={styleValue}
+                timerDate={data.time}
+              />
+            ))
+          : null}
       </div>
     </>
   );

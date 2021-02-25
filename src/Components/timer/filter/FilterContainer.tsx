@@ -5,7 +5,7 @@ import { Checkbox, Button, Icon } from "semantic-ui-react";
 import { useSharedTimerState } from "../TimerContainer";
 import { TextField } from "@material-ui/core";
 import { useSharedFilterState } from "./functions/sharedFilterState";
-import Pyramids from '../../../imgs/sidebar-topper.jpg';
+import Pyramids from "../../../imgs/sidebar-topper.jpg";
 import "./FilterContainer.scss";
 
 /**
@@ -21,11 +21,11 @@ export const FilterContainer = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleIsVisible = (e: React.MouseEvent) => {
-    setIsVisible(!isVisible)
-  }
+    setIsVisible(!isVisible);
+  };
 
-  const barStatus = isVisible ? 'filter-timer-visible' : 'filter-timer-hidden';
-  const btnStatus = isVisible ? 'text-secondary' : 'text-black';
+  const barStatus = isVisible ? "filter-timer-visible" : "filter-timer-hidden";
+  const btnStatus = isVisible ? "text-secondary" : "text-black";
 
   // runs every time the filterParams state changes
   useEffect(() => {
@@ -65,9 +65,23 @@ export const FilterContainer = () => {
 
   return (
     <>
-      <button onClick={handleIsVisible} className={`static fixed z-50 right-4 top-4 md:hidden text-white rounded-md text-xl ${btnStatus}`}><Icon name={'options'} /></button>
-      <div className={`w-full h-20 bg-white flex justify-start flex-row items-center mb-12 md:p-6 border-l-8 border-secondary mt-12 ${barStatus}`}>
-        <div className={'block md:hidden w-full flex items-center justify-start pl-4 filters-header'} style={{backgroundImage: `url(${Pyramids})`}}><h2>Filters</h2></div>
+      <button
+        onClick={handleIsVisible}
+        className={`static fixed z-50 right-4 top-4 md:hidden text-white rounded-md text-xl ${btnStatus}`}
+      >
+        <Icon name={"options"} />
+      </button>
+      <div
+        className={`w-full h-20 bg-white flex justify-start flex-row items-center mb-12 md:p-6 border-l-8 border-secondary mt-12 ${barStatus}`}
+      >
+        <div
+          className={
+            "block md:hidden w-full flex items-center justify-start pl-4 filters-header"
+          }
+          style={{ backgroundImage: `url(${Pyramids})` }}
+        >
+          <h2>Filters</h2>
+        </div>
         <Checkbox label="Active" />
         <TextField
           className="searchbar"
