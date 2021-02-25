@@ -3,6 +3,7 @@ import { ChartFilterItem } from "./ChartFilterItem";
 import { Icon } from "semantic-ui-react";
 import "./ChartFilter.scss";
 import { useSharedChartState } from "../functions/sharedChartState";
+import Pyramid from '../../../imgs/sidebar-topper.jpg';
 
 /**
  * Component for filtering displayed chart results
@@ -19,6 +20,14 @@ interface Props {
 
 export const ChartFilter = (props: Props) => {
   const [active, setActive] = useState("chart-filters-active");
+
+  // Control sidebar status on mobile
+  const [isVisible, setIsVisible] = useState(false);
+  const barStatus = isVisible ? 'chart-filters-mobile-visible' : 'chart-filters-mobile-hidden';
+
+  const handleVisible = () => {
+    setIsVisible(!isVisible);
+  }
 
   const chartTypes = [
     { name: "All Users", type: "assignedTo", icon: "user" },
@@ -37,32 +46,33 @@ export const ChartFilter = (props: Props) => {
   let theClass = active.toString();
 
   return (
-    <div
-      className={
-        "w-64 h-full relative top-0 bg-white flex flex-col justify-start items-start flex-row items-center mb-12 pl-4 pr-4 border-r-2 chart-filter" +
-        " " +
-        theClass
-      }
-    >
-      <div className="pt-4">
-        <button
-          className="arrow-btn"
-          onClick={() => {
-            active === "chart-filters-active"
-              ? setActive("chart-filters-hidden")
-              : setActive("chart-filters-active");
-          }}
-        >
-          <Icon name="arrow left" />
-        </button>
-      </div>
-      <div className="flex flex-col h-screen items-center w-full filter-icon-container">
-        <div className="filter-header">
-          <h3 className="text-white filters-title">Filters</h3>
-          <Icon name="options" />
+      <>
+      <button onClick={handleVisible} className={'filter-toggle-button'}><Icon name={'options'} /></button>
+      <div
+        className={
+          `w-64 h-full relative top-0 bg-white flex flex-col justify-start items-start flex-row items-center mb-12 pl-4 pr-4 border-r-2 chart-filter ${theClass} ${barStatus}`
+        }
+      >
+        <div className="pt-4 hidden md:block">
+          <button
+            className="arrow-btn md:inline hidden"
+            onClick={() => {
+              active === "chart-filters-active"
+                ? setActive("chart-filters-hidden")
+                : setActive("chart-filters-active");
+            }}
+          >
+            <Icon name="arrow left" />
+          </button>
         </div>
-        <div className="grid grid-col-3 w-full">{filters}</div>
+        <div className="flex flex-col h-screen items-center w-full filter-icon-container">
+          <div className="filter-header" style={{backgroundImage: `url(${Pyramid})`}}>
+            <h2 className="text-white filters-title">Filters</h2>
+            <Icon name="options" className={'filters-icon'}/>
+          </div>
+          <div className="grid grid-col-3 w-full">{filters}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

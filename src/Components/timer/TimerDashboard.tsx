@@ -15,10 +15,12 @@ const TimerDashboard = () => {
         <div className="timer-dashboard">
             <TimerControl/>
             <FilterContainer />
-            <div className="float-left">
-                <h2>My Timers</h2>
-            </div>
-            <TimerContainer />
+            <section className={'timer-section md:mt-0 mt-8 pt-8 border-t-2'}>
+                <div className="float-left">
+                    <h2>Timers</h2>
+                </div>
+                <TimerContainer />
+            </section>
         </div>
     )
 
