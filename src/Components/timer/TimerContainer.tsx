@@ -51,12 +51,19 @@ const TimerContainer: React.FC = () => {
    */
 
   useEffect(() => {
+    let isSubscribed = true;
     getTimers().then((timers) => {
-      // @ts-ignore
-      setTimerModel(timers.data);
-      console.log(timerModel);
-      setLoading(false);
+      if (isSubscribed) {
+        // @ts-ignore
+        setTimerModel(timers.data);
+        console.log(timerModel);
+        setLoading(false);
+      }
     });
+    // cancel subscription to useEffect
+    return () => {
+      isSubscribed = false;
+    };
   }, []);
 
   useEffect(() => {

@@ -25,10 +25,17 @@ const CalcContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isSubscribed = true;
     getTimers().then((timers: any) => {
-      setTimerData(timers);
-      setLoading(false);
+      if (isSubscribed) {
+        setTimerData(timers);
+        setLoading(false);
+      }
     });
+    // cancel subscription to useEffect
+    return () => {
+      isSubscribed = false;
+    };
   }, []);
 
   useEffect(() => {

@@ -14,6 +14,7 @@ export const CalendarObj: React.FC = () => {
   const calendarItems: Array<any> = [];
 
   useEffect(() => {
+    let isSubscribed = true;
     getTimers().then((timers: any) => {
       timers.data.forEach((timer: any) => {
         timer.timers.forEach((timeEntry: any) => {
@@ -27,9 +28,15 @@ export const CalendarObj: React.FC = () => {
           calendarItems.push(calendarItem);
         });
       });
-      setLoader(false);
-      setTimerItems(calendarItems);
+      if (isSubscribed) {
+        setLoader(false);
+        setTimerItems(calendarItems);
+      }
     });
+    // cancel subscription to useEffect
+    return () => {
+      isSubscribed = false;
+    };
   }, []);
 
   if (loader) {
