@@ -27,6 +27,7 @@ const TimerCreate = (props: { current: boolean }) => {
   /** Data taken from form fields and PUT to the backend */
   const [name, setName]: any = useState(null);
   const [user, setUser]: any = useState(null);
+  const [client, setClient]: any = useState(null);
   const [isBillable, setIsBillable] = useState(false);
   /** Billable checkbox value (as boolean) */
   const [showNotify, setShowNotify] = useState(false);
@@ -64,8 +65,13 @@ const TimerCreate = (props: { current: boolean }) => {
     console.log(user);
   };
 
+  const handleTimerClient = (e: React.FormEvent<HTMLInputElement>): void => {
+    setClient(e.currentTarget.value);
+    console.log(client);
+  };
+
   const handleTimerAdd = () => {
-    if (!(name || user)) {
+    if (!name || !user || !client) {
       setNotifyMsg("Please enter all fields");
       console.log("enter all fields");
       setIconState("close");
@@ -81,6 +87,7 @@ const TimerCreate = (props: { current: boolean }) => {
         setTimerData({
           name: name,
           assignedTo: user,
+          client: client,
           startTime: startTime,
           endTime: endTime,
           isBillable: isBillable,
@@ -103,6 +110,7 @@ const TimerCreate = (props: { current: boolean }) => {
       setTimerData({
         name: name,
         assignedTo: user,
+        client: client,
         startTime: currentTime,
         isBillable: isBillable,
       });
@@ -120,6 +128,11 @@ const TimerCreate = (props: { current: boolean }) => {
         <div className="flex flex-col items-start text-gray-500 ml-6 mr-6">
           <label>User</label>
           <Input type="text" onChange={handleTimerAssigned} />
+        </div>
+
+        <div className="flex flex-col items-start text-gray-500 ml-6 mr-6">
+          <label>Client</label>
+          <Input type="text" onChange={handleTimerClient} />
         </div>
 
         <div>{!props.current ? <TimeTracker /> : null}</div>

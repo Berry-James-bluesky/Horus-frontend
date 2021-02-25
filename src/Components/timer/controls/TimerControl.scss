@@ -32,6 +32,9 @@
   top: 10px;
   color: $h1 !important;
   font-weight: bold !important;
+  :first-child {
+    border-bottom: 1px solid !important;
+  }
 }
 .switch-btn:focus {
   border: none !important;
