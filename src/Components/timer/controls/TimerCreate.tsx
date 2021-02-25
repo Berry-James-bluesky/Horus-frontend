@@ -4,7 +4,9 @@ import AddButton from "./AddButton";
 import { Notify } from "../../notify/Notify";
 import { TimeTracker } from "./TimeTracker";
 import { useSharedTimeState } from "./functions/sharedTimeState";
-import { postTimer } from "./../../API";
+import { useSharedTimerState } from "../TimerContainer";
+import { postTimer, getTimers } from "./../../API";
+import { useSharedTimerDataState } from "../../chart/functions/sharedTimerDataState";
 
 /**
  * [INCOMPLETE - no data is sent to backend and no new timer object is created.  Data is currently being set to state timerData and console logged for proof of concept.  Time tracker does not function correctly and no time data is logged)
@@ -15,7 +17,13 @@ import { postTimer } from "./../../API";
  */
 
 const TimerCreate = (props: { current: boolean }) => {
-  const [timerData, setTimerData] = useState<ITimer | any>({});
+  const {
+    timerModel,
+    setTimerModel,
+    timerView,
+    setTimerView,
+  } = useSharedTimerState();
+  const [timerData, setTimerData] = useState<ITimer | any>(null);
   /** Data taken from form fields and PUT to the backend */
   const [name, setName]: any = useState(null);
   const [user, setUser]: any = useState(null);
@@ -33,21 +41,17 @@ const TimerCreate = (props: { current: boolean }) => {
   } = useSharedTimeState();
   // shared state of time tracker component
 
-  const Post = async (value: any) => {
-    const response = await postTimer(value);
-    return response;
-  };
-
   useEffect(() => {
-    Post(JSON.stringify(timerData));
+    if (timerData !== null) {
+    }
   }, [timerData]);
 
-  useEffect(() => {
-    setTimerData({
-      ...timerData,
-      billable: isBillable,
-    });
-  }, [isBillable]);
+  // useEffect(() => {
+  //   setTimerData({
+  //     ...timerData,
+  //     billable: isBillable,
+  //   });
+  // }, [isBillable]);
 
   const handleTimerName = (e: React.FormEvent<HTMLInputElement>): void => {
     setName(e.currentTarget.value);
@@ -78,6 +82,7 @@ const TimerCreate = (props: { current: boolean }) => {
           assignedTo: user,
           startTime: startTime,
           endTime: endTime,
+          isBillable: isBillable,
         });
         setNotifyMsg("Timer successfully added");
         console.log("successfully added");
@@ -98,6 +103,7 @@ const TimerCreate = (props: { current: boolean }) => {
         name: name,
         assignedTo: user,
         startTime: currentTime,
+        isBillable: isBillable,
       });
     }
   };

@@ -16,12 +16,7 @@ export const postTimer = async (
   value: any
 ): Promise<AxiosResponse<ApiDataType>> => {
   try {
-    const timer: AxiosResponse<ApiDataType> = await axios.post(baseURL, value, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
+    const timer: AxiosResponse<ApiDataType> = await axios.post(baseURL, value);
     return timer;
   } catch (error) {
     //throw new Error(error);
