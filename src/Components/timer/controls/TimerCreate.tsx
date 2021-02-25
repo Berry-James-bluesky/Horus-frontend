@@ -4,6 +4,7 @@ import AddButton from "./AddButton";
 import { Notify } from "../../notify/Notify";
 import { TimeTracker } from "./TimeTracker";
 import { useSharedTimeState } from "./functions/sharedTimeState";
+import { postTimer } from "./../../API";
 
 /**
  * [INCOMPLETE - no data is sent to backend and no new timer object is created.  Data is currently being set to state timerData and console logged for proof of concept.  Time tracker does not function correctly and no time data is logged)
@@ -16,6 +17,8 @@ import { useSharedTimeState } from "./functions/sharedTimeState";
 const TimerCreate = (props: { current: boolean }) => {
   const [timerData, setTimerData] = useState<ITimer | any>({});
   /** Data taken from form fields and PUT to the backend */
+  const [name, setName]: any = useState(null);
+  const [user, setUser]: any = useState(null);
   const [isBillable, setIsBillable] = useState(false);
   /** Billable checkbox value (as boolean) */
   const [showNotify, setShowNotify] = useState(false);
@@ -30,12 +33,13 @@ const TimerCreate = (props: { current: boolean }) => {
   } = useSharedTimeState();
   // shared state of time tracker component
 
-  useEffect(() => {
-    console.log("TIME VALUE:", startTime);
-  }, [startTime]);
+  const Post = async (value: any) => {
+    const response = await postTimer(value);
+    return response;
+  };
 
   useEffect(() => {
-    console.log(timerData);
+    Post(JSON.stringify(timerData));
   }, [timerData]);
 
   useEffect(() => {
@@ -46,23 +50,17 @@ const TimerCreate = (props: { current: boolean }) => {
   }, [isBillable]);
 
   const handleTimerName = (e: React.FormEvent<HTMLInputElement>): void => {
-    setTimerData({
-      ...timerData,
-      name: e.currentTarget.value,
-    });
-    console.log(timerData);
+    setName(e.currentTarget.value);
+    console.log(name);
   };
 
   const handleTimerAssigned = (e: React.FormEvent<HTMLInputElement>): void => {
-    setTimerData({
-      ...timerData,
-      assignedTo: e.currentTarget.value,
-    });
-    console.log(timerData);
+    setUser(e.currentTarget.value);
+    console.log(user);
   };
 
-  const handleTimerAdd = (): void => {
-    if (!(timerData.name || timerData.assignedTo)) {
+  const handleTimerAdd = () => {
+    if (!(name || user)) {
       setNotifyMsg("Please enter all fields");
       console.log("enter all fields");
       setIconState("close");
@@ -76,7 +74,8 @@ const TimerCreate = (props: { current: boolean }) => {
     } else if (!props.current) {
       if (Date.parse(startTime) < Date.parse(endTime)) {
         setTimerData({
-          ...timerData,
+          name: name,
+          assignedTo: user,
           startTime: startTime,
           endTime: endTime,
         });
@@ -96,7 +95,8 @@ const TimerCreate = (props: { current: boolean }) => {
     } else {
       const currentTime = new Date();
       setTimerData({
-        ...timerData,
+        name: name,
+        assignedTo: user,
         startTime: currentTime,
       });
     }
