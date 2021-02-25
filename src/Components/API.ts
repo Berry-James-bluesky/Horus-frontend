@@ -3,9 +3,9 @@ import test from "../test.json";
 
 const baseURL: string = "./test.json";
 
-export const getTimers = async (): Promise<AxiosResponse<ApiDataType>> => {
+export const getTimers = async (): Promise<AxiosResponse<Array<{}>>> => {
   try {
-    const timers: AxiosResponse<ApiDataType> = await axios.get(baseURL);
+    const timers: AxiosResponse<Array<{}>> = await axios.get(baseURL);
     return timers;
   } catch (error) {
     throw new Error(error);

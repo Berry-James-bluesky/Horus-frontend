@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import test from "../../../test.json";
+//import test from "../../../test.json";
 import { useSharedTimerState } from "../TimerContainer";
 import { useSharedFilterState } from "./functions/sharedFilterState";
+import { getTimers } from "../../API";
 
 /**
  * Multi-use dropdown-style filter powered by { react-select }
@@ -43,45 +44,22 @@ export const Filter: React.FC<Props> = (props: Props) => {
   /** Function runs on first render, checks for passed props.isType */
 
   const getData = () => {
-    if (filterType === "Project Name") {
-      /** Loop through each item in fetched data (test in this case) */
-      test.forEach((item) => {
+    /** Loop through each item in fetched data (test in this case) */
+    getTimers().then((timers) => {
+      //console.log(timers.data.data)
+      timers.data.forEach((item: any) => {
         let filterObj = {
           value: "",
           label: "",
         };
         /** set filterObj 'value' and 'label' to corresponding value from fetched data (in this case, the name is assigned as this is a 'Project Name' filter) */
-        filterObj.value = item.name;
-        filterObj.label = item.name;
+        filterObj.value = item[filterType];
+        filterObj.label = item[filterType];
         /** Push newly created filterObj to the filterOptions array (to be displayed in the react-select dropdown) */
         filterOptionsArray.push(filterObj);
         //console.log('the options are', filterOptions)
       });
-    }
-
-    if (filterType === "assignedTo") {
-      test.forEach((item) => {
-        let filterObj = {
-          value: "",
-          label: "",
-        };
-        filterObj.value = item.assignedTo;
-        filterObj.label = item.assignedTo;
-        filterOptionsArray.push(filterObj);
-      });
-    }
-
-    if (filterType === "client") {
-      test.forEach((item) => {
-        let filterObj = {
-          value: "",
-          label: "",
-        };
-        filterObj.value = item.client;
-        filterObj.label = item.client;
-        filterOptionsArray.push(filterObj);
-      });
-    }
+    });
     setFilterOptions(filterOptionsArray);
   };
 
@@ -91,11 +69,6 @@ export const Filter: React.FC<Props> = (props: Props) => {
     /** fetch data and assign it to dropdown */
     getData();
   }, []);
-
-  useEffect(() => {
-    if (!filterParams.user && !filterParams.client) {
-    }
-  }, [timerView]);
 
   useEffect(() => {
     console.log("timers are", timerModel);

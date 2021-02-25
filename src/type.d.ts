@@ -8,7 +8,7 @@ interface ITimer {
 }
 
 interface ApiDataType {
-  data: any;
+  data: [];
   name: string;
   assignedTo: string;
   project: string;
