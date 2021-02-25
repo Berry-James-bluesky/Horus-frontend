@@ -43,7 +43,7 @@ const TimerCreate = (props: { current: boolean }) => {
 
   useEffect(() => {
     if (timerData !== null) {
-      postTimer(timerData);
+      postTimer(timerData).then((timer) => console.log(timer));
     }
   }, [timerData]);
 
