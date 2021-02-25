@@ -21,13 +21,15 @@ const TimerControl = () => {
       >
         Add Timer
       </button>
-      <div className="w-100 bg-white shadow-sm flex mt-8 p-6 justify-left items-center border-l-8 border-secondary">
+      <div className="w-100 bg-white shadow-sm flex mt-8 p-6 justify-left items-center border-l-8 border-secondary relative">
         <Button
           onClick={(initialValue: any) =>
             setTimerType((initialValue) => !initialValue)
           }
+          disableElevation
+          className="switch-btn"
         >
-          switch
+          {!timerType ? "Add current task" : "Add past task"}
         </Button>
         <div
           className={`${barStatus} w-100 bg-white shadow-sm flex mt-8 p-6 justify-between items-center border-l-8 border-secondary flex-wrap`}
