@@ -9,6 +9,7 @@ export const getTimers = async (): Promise<AxiosResponse<Array<{}>>> => {
     console.log(baseURL);
     return timers;
   } catch (error) {
+    return error;
     throw new Error(error);
   }
 };
@@ -24,6 +25,7 @@ export const postTimer = async (
     });
     return timer;
   } catch (error) {
+    return error;
     throw new Error(error);
     //return error;
   }
