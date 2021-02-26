@@ -15,6 +15,20 @@
   }
 }
 
+.notify-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .notify {
   animation: notifyEntry 4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
 }

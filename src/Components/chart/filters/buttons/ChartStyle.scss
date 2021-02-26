@@ -3,6 +3,27 @@
 //  justify-content: flex-start;
 //}
 
+@keyframes btnIntro {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.chart-style-btns-visible {
+  display: flex;
+}
+
+.chart-style-btns-hidden {
+  display: none;
+}
+
+.chart-style-btns {
+
+}
+
 @media screen and (max-width: 768px) {
   .chart-style-btns {
     justify-content: space-evenly;
@@ -14,5 +35,15 @@
 
   .calc-container {
     padding: 0;
+  }
+}
+
+.chart-style-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  animation: btnIntro 0.2s ease-out;
+
+  img {
+    filter: saturate(0) brightness(10);
+
   }
 }

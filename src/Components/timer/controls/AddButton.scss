@@ -5,19 +5,20 @@
     rgba(255, 225, 168, 1) 100%
   ) !important;
   background-size: 300% auto !important;
+  margin-left: 1.5rem;
   color: #fff !important;
-  font-size: 2rem;
+  font-size: 1rem;
   border: none;
   border-radius: 5px;
   padding: 0 20px;
   height: 40px;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   transition: 0.5s !important;
 }
 
 .add-button:hover {
-  transform: scale(1.1);
   background-position: right center !important; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
@@ -25,4 +26,5 @@
 
 .add-button i {
   margin: 0 !important; /*override semantic UI margin*/
+  font-size: inherit !important;
 }

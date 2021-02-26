@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useBetween } from "use-between";
 
 const useTimerDataState = () => {
-  const [graphStyle, setGraph] = useState("pie");
+  const [graphStyle, setGraph] = useState("bar");
   const [timerData, setData]: any = useState("client");
   const setTimerData = (value: any) => {
     setData(value);

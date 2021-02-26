@@ -1,0 +1,152 @@
+@import '../../var';
+
+@keyframes modalEntry {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes backdropEntry {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-underlay {
+  //backdrop-filter: blur(3px);
+
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-container {
+  animation: modalEntry 0.4s ease-out forwards;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  width: 700px;
+  height: fit-content;
+  margin: auto;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 1rem rgba(0,0,0,0.4);
+  color: #000;
+  opacity: 0;
+  padding-bottom: 1rem;
+  transition: 0.3s;
+
+  .modal-header {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px 15px 0 0;
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 9999px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  transform: translate(8px, -8px);
+  transition: 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: $h1;
+}
+
+.modal-tab {
+  width: 100%;
+  height: 60px;
+  color: #000;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
+
+  .inactive-tab {
+    background: rgba(255, 255, 255, 0.3);
+    grid-row: 1 / span 1;
+  }
+
+  .tab-right {
+    grid-column: 2 / span 1;
+  }
+
+  .tab-left {
+    grid-column: 1 / span 1;
+  }
+
+  .switch-btn-left {
+    grid-column: 2 / span 1;
+  }
+
+  .switch-btn-right {
+    grid-column: 1 / span 1;
+  }
+
+  .switch-btn {
+    font-weight: bold !important;
+    color: #fff !important;
+
+    :first-child {
+      border-bottom: 1px solid !important;
+    }
+  }
+  .switch-btn:focus {
+    border: none !important;
+    outline: none !important;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .modal-underlay {
+    background: none;
+  }
+  .modal-container {
+    box-shadow: none;
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    height: calc(100% - 50px);
+    margin: 0 !important;
+    border-radius: 0 !important;
+
+    .modal-close-btn {
+      transform: translate(0,0);
+      border-radius: 0;
+      left: 0;
+      top: 15px;
+      width: 70px;
+      font-size: 0rem;
+      background: none;
+    }
+
+    .modal-close-btn:before {
+      content: '\2190';
+      font-weight: bold;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    .modal-header {
+      border-radius: 0;
+    }
+  }
+}

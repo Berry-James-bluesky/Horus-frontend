@@ -7,6 +7,7 @@ import { useSharedTimeState } from "./functions/sharedTimeState";
 import { useSharedTimerState } from "../TimerContainer";
 import { postTimer, getTimers } from "./../../API";
 import { useSharedTimerDataState } from "../../chart/functions/sharedTimerDataState";
+import './TimerCreate.scss';
 
 /**
  * [INCOMPLETE - no data is sent to backend and no new timer object is created.  Data is currently being set to state timerData and console logged for proof of concept.  Time tracker does not function correctly and no time data is logged)
@@ -119,39 +120,42 @@ const TimerCreate = (props: { current: boolean }) => {
 
   return (
     <>
-      <Form.Field className="flex items-center">
-        <div className="flex flex-col items-start text-gray-500 ml-6 mr-6">
-          <label>Project Name</label>
-          <Input type="text" onChange={handleTimerName} />
-        </div>
+      <div className={'add-timer-wrapper'}>
+        <Form.Field className="flex flex-col items-start w-full add-timer-form">
+          <div className="flex flex-col items-start text-gray-500 ml-6 mb-6 w-full">
+            <label className={'text-white'}>Project Name</label>
+            <Input type="text" onChange={handleTimerName} className={'add-timer-input'}/>
+          </div>
 
-        <div className="flex flex-col items-start text-gray-500 ml-6 mr-6">
-          <label>User</label>
-          <Input type="text" onChange={handleTimerAssigned} />
-        </div>
+          <div className="flex flex-col items-start text-gray-500 ml-6 mb-6 w-full">
+            <label className={'text-white'}>User</label>
+            <Input type="text" onChange={handleTimerAssigned} className={'add-timer-input'} />
+          </div>
 
-        <div className="flex flex-col items-start text-gray-500 ml-6 mr-6">
-          <label>Client</label>
-          <Input type="text" onChange={handleTimerClient} />
-        </div>
+          <div className="flex flex-col items-start text-gray-500 ml-6 mb-6 w-full">
+            <label className={'text-white'}>Client</label>
+            <Input type="text" onChange={handleTimerClient} className={'add-timer-input'}/>
+          </div>
 
-        <div>{!props.current ? <TimeTracker /> : null}</div>
+          <div>{!props.current ? <TimeTracker /> : null}</div>
 
-        <Form.Field label="Billable?" />
-        <Checkbox
-          checked={isBillable}
-          onChange={(e: any) => {
-            setIsBillable((initialValue: any) => !initialValue);
+          <Form.Field label="Billable?" className={'ml-6 text-white'}/>
+            <Checkbox
+              checked={isBillable}
+              onChange={(e: any) => {
+                setIsBillable((initialValue: any) => !initialValue);
+              }}
+              inputprops={{ "aria-label": "primary checkbox" }}
+              className={'ml-6'}
+            />
+        </Form.Field>
+        <AddButton
+          addTimer={(e: React.FormEvent<HTMLInputElement>) => {
+            handleTimerAdd();
           }}
-          inputprops={{ "aria-label": "primary checkbox" }}
+          isDisabled={timerData === undefined ? true : false}
         />
-      </Form.Field>
-      <AddButton
-        addTimer={(e: React.FormEvent<HTMLInputElement>) => {
-          handleTimerAdd();
-        }}
-        isDisabled={timerData === undefined ? true : false}
-      />
+      </div>
       <Notify isVisible={showNotify} text={notifyMsg} icon={iconState} />
     </>
   );

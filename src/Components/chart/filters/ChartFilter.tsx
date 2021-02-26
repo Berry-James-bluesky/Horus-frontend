@@ -47,10 +47,10 @@ export const ChartFilter = (props: Props) => {
 
   return (
       <>
-      <button onClick={handleVisible} className={'filter-toggle-button'}><Icon name={'options'} /></button>
+      <button onClick={handleVisible} className={'filter-toggle-button block md:hidden'}><Icon name={'options'} /></button>
       <div
         className={
-          `w-64 h-full relative top-0 bg-white flex flex-col justify-start items-start flex-row items-center mb-12 pl-4 pr-4 border-r-2 chart-filter ${theClass} ${barStatus}`
+          `w-64 h-full relative top-0 flex flex-col justify-start items-start flex-row items-center mb-12 pl-4 pr-4 chart-filter ${theClass} ${barStatus}`
         }
       >
         <div className="pt-4 hidden md:block">

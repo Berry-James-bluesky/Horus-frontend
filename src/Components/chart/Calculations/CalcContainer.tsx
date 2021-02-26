@@ -42,9 +42,9 @@ const CalcContainer = () => {
 
   if (loading) {
     return (
-      <div className="h-full">
-        <CircularProgress className="m-auto absolute left-0 right-0 top-0 bottom-0" />
-      </div>
+        <div className="h-full">
+          <CircularProgress className="m-auto absolute left-0 right-0 top-0 bottom-0" />
+        </div>
     );
   }
 
@@ -52,7 +52,7 @@ const CalcContainer = () => {
 
   return (
     <div className="w-full relative right-0 p-12">
-      <h1 className="mt-0">Statistics</h1>
+      <h1 className="mt-0 title">Statistics</h1>
       <ChartStyle clickEvent={getType} />
       <ProjectSplit />
       <Total />

@@ -5,6 +5,7 @@ import { Profile } from './Profile';
 import { Link, useLocation } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import Pyramids from '../../imgs/sidebar-topper.jpg';
+import Noise from '../../imgs/noise.png';
 import './Sidebar.scss';
 
 /**
@@ -44,15 +45,15 @@ const Sidebar: React.FC = () => {
     let currentLocation = useLocation().pathname.split('/')[1];
 
     return(
-        <div className={`h-screen bg-gray-50 border-r-2 background-black pl-6 sticky fixed top-0 left-0 w-80 z-10 overflow-hidden sidebar ${size}`}>
+        <div className={`h-screen pl-6 sticky fixed top-0 left-0 w-96 z-10 overflow-hidden sidebar ${size}`}>
             <div className='pt-4 sidebar-toggle-container'>
                 <button onClick={() => {size === 'full-size-sidebar' ? setSize('small-size-sidebar') : setSize('full-size-sidebar')}} className='sidebar-toggle-btn'><Icon name='arrow left' /></button>
             </div>
-            <div className='flex align-center w-full row-span-1 pt-6 pb-2 mb-6 branding-container'>
+            <div className='flex align-center w-full row-span-1 pt-6 pb-2 mb-2 pl-2 branding-container'>
                 <Link to='/' className='font-primary branding-link'>
                     <span className='font-serif text-2xl font-normal inline-flex'>
                         <img src={logo} className='w-8 horus-logo' alt='Horus'/>
-                        <span className='ml-8 text-primary branding-text'>Horus</span>
+                        <span className='horus branding-text'>Horus</span>
                     </span>
                 </Link>
 
@@ -60,7 +61,6 @@ const Sidebar: React.FC = () => {
                     <Icon name={'bars'} />
                 </button>
                 <span className={'font-sans ml-4 text-gray-200 md:hidden block'}>{currentLocation}</span>
-
             </div>
             <div className={`grid grid-row-6 navlink-container ${linksStatus}`}>
                 <div className={`block md:hidden sidebar-header flex items-center justify-start pl-4`} style={{backgroundImage: `url(${Pyramids})`}}><h2 className={'font-serif font-normal'}>Horus</h2></div>

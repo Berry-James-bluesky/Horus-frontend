@@ -12,14 +12,11 @@ import Sidebar from './Components/sidebar/Sidebar';
 // @ts-ignore
 const App: React.FC = ({ isVisible }) => {
 
-
-
-
   return (
       <BrowserRouter>
           <main className='flex flex-row'>
               <Sidebar />
-              <section className='relative right-0 overflow-y-scroll pl-6 pr-6 main-content w-full bg-gray-50'>
+              <section className='relative right-0 overflow-y-scroll pr-6 main-content w-full'>
                   <Switch>
                     <Route path='/' exact component={Dashboard} />
                     <Route path='/dashboard' exact component={Dashboard} />

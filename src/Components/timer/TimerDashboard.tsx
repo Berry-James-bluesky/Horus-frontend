@@ -12,12 +12,14 @@ import { FilterContainer } from './filter/FilterContainer';
 const TimerDashboard = () => {
 
     return(
-        <div className="timer-dashboard">
-            <TimerControl/>
-            <FilterContainer />
-            <section className={'timer-section md:mt-0 mt-8 pt-8 border-t-2'}>
+        <div className="timer-dashboard pl-6">
+            <div className={'flex items-center justify-between transition-all'}>
+                <FilterContainer />
+                <TimerControl/>
+            </div>
+            <section className={'timer-section md:mt-0 mt-8 pt-8'}>
                 <div className="float-left">
-                    <h2>Timers</h2>
+                    <h2 className={'title'}>Timers</h2>
                 </div>
                 <TimerContainer />
             </section>

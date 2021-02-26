@@ -3,6 +3,7 @@ import Select from "react-select";
 //import test from "../../../test.json";
 import { useSharedTimerState } from "../TimerContainer";
 import { useSharedFilterState } from "./functions/sharedFilterState";
+import './Filter.scss';
 import { getTimers } from "../../API";
 
 /**
@@ -85,6 +86,8 @@ export const Filter: React.FC<Props> = (props: Props) => {
   return (
     <div className="w-60 ml-6 mr-6 filter-item">
       <Select
+        styles={{menu: provided => ({...provided, zIndex: 50})}}
+        className={'timer-filter-item'}
         placeholder={
           filterType === "assignedTo"
             ? "User"

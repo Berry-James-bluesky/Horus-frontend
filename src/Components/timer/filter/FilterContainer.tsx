@@ -20,12 +20,26 @@ export const FilterContainer = () => {
   // set mobile-toggle state
   const [isVisible, setIsVisible] = useState(false);
 
-  const handleIsVisible = (e: React.MouseEvent) => {
-    setIsVisible(!isVisible);
-  };
+  // set dialog box state
+  const [isDialogVisible, setIsDialogVisible] = useState(false);
 
-  const barStatus = isVisible ? "filter-timer-visible" : "filter-timer-hidden";
-  const btnStatus = isVisible ? "text-secondary" : "text-black";
+  // handler for toggling mobile state
+  const handleIsVisible = (e: React.MouseEvent) => {
+    setIsVisible(!isVisible)
+  }
+
+  // handler for toggling dialog box state
+  const handleDialogBox = () => {
+    setIsDialogVisible(!isDialogVisible);
+  }
+
+  // Classes assigned to determine filter dialog box visibility
+  const filtersStatus = isDialogVisible ? 'filter-dialog-visible' : 'filter-dialog-hidden';
+  const filterBtnStatus = isDialogVisible ? 'filter-btn-active' : '';
+
+  // Classes assigned to determine filter sidebar visibility (MOBILE)
+  const barStatus = isVisible ? 'filter-timer-visible' : 'filter-timer-hidden';
+  const btnStatus = isVisible ? 'text-secondary' : 'text-black';
 
   // runs every time the filterParams state changes
   useEffect(() => {
@@ -65,41 +79,37 @@ export const FilterContainer = () => {
 
   return (
     <>
-      <button
-        onClick={handleIsVisible}
-        className={`static fixed z-50 right-4 top-4 md:hidden text-white rounded-md text-xl ${btnStatus}`}
-      >
-        <Icon name={"options"} />
-      </button>
-      <div
-        className={`w-full h-20 bg-white flex justify-start flex-row items-center mb-12 md:p-6 border-l-8 border-secondary mt-12 ${barStatus}`}
-      >
-        <div
-          className={
-            "block md:hidden w-full flex items-center justify-start pl-4 filters-header"
-          }
-          style={{ backgroundImage: `url(${Pyramids})` }}
-        >
-          <h2>Filters</h2>
+      <button onClick={handleIsVisible} className={`static fixed z-50 right-4 top-4 md:hidden text-white rounded-md text-xl ${btnStatus}`}><Icon name={'options'} /></button>
+      <div className={`flex items-start flex-col justify-center mb-2 md:p-2 md:pl-6 border-l-8 border-secondary mt-2 timer-filter-container ${barStatus}`}>
+        <div className={'block md:hidden w-full flex items-center justify-start pl-4 filters-header'} style={{backgroundImage: `url(${Pyramids})`}}><h2>Filters</h2></div>
+       <div className={'flex items-center w-full'}>
+        <div className={'show-filters-container'}>
+          <button onClick={handleDialogBox} className={`filters-icon-btn ${filterBtnStatus}`}><Icon name={'filter'}/></button>
         </div>
-        <Checkbox label="Active" />
-        <TextField
-          className="searchbar"
-          label="Search Tasks"
-          onKeyUp={(e: any) => {
-            filterByWord(e.target.value.toLowerCase());
-          }}
-        />
-        <Filter isType="assignedTo" filter={filterTimers} />
-        <Filter isType="client" filter={filterTimers} />
-        <Button
-          onClick={() => {
-            setTimerView(timerModel);
-            setFilterParams([]);
-          }}
-        >
-          Reset Filters
-        </Button>
+           <div className={'searchbar-container w-full'}>
+               <Icon name={'search'}/>
+               <input
+                   className="searchbar"
+                   placeholder="Search"
+                   onKeyUp={(e: any) => {
+                       filterByWord(e.target.value.toLowerCase());
+                   }}
+               />
+           </div>
+       </div>
+        <div className={`filters-dialog ${filtersStatus}`}>
+          <Filter isType="assignedTo" filter={filterTimers} />
+          <Filter isType="client" filter={filterTimers} />
+          <Checkbox label="Active" />
+          <button className={'styled-button'}
+                  onClick={() => {
+                    setTimerView(timerModel);
+                    setFilterParams([]);
+                  }}
+          >
+            Reset Filters
+          </button>
+        </div>
       </div>
     </>
   );
