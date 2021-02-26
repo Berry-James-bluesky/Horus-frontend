@@ -16,7 +16,9 @@
 
 .add-timer-btn {
   background: $h1;
+  border-radius: 15px;
   height: 52px;
+  width: 15%;
   box-shadow: 0 0 1rem rgba(226, 110, 92, 0.2);
   color: #fff;
   font-family: $font-primary;
@@ -54,16 +56,3 @@
   }
 }
 
-.switch-btn {
-  position: absolute !important;
-  top: 10px;
-  color: $h1 !important;
-  font-weight: bold !important;
-  :first-child {
-    border-bottom: 1px solid !important;
-  }
-}
-.switch-btn:focus {
-  border: none !important;
-  outline: none !important;
-}

@@ -28,7 +28,7 @@
     align-items: center;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: #f2f2f2;
+    background-color: rgba(255, 255, 255, 0.5);
 
     // Hide the small-large toggler
     .sidebar-toggle-container {
@@ -43,7 +43,7 @@
 
       .hamburger-icon {
         display: flex;
-        color: $h1;
+        color: #fff !important;
         font-size: 1.5rem;
       }
 

@@ -25,10 +25,12 @@ export const Modal = (props: Props) => {
         setIsVisible(props.active)
     }, [props.active]);
 
-
+    const handleBgClick = (e: any) => {
+        setIsVisible(!isVisible)
+    }
 
     if(!isVisible) {
-        return(<div></div>)
+        return(null)
     } else {
 
         return (

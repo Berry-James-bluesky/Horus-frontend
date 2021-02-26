@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon, Button } from "semantic-ui-react";
-import "./AddButton.css";
+import "./AddButton.scss";
 
 /**
  * Button used to add a timer
@@ -18,13 +18,13 @@ type Props = {
 
 const AddButton: React.FC<Props> = (props) => {
   return (
-    <Button
-      className="add-button absolute right-24"
+    <button
+      className="add-button"
       onClick={props.addTimer}
       disabled={props.isDisabled}
     >
-      <Icon name="plus" size="small" /> Add Clock
-    </Button>
+      <Icon name="plus" size="small" /> Add Timer
+    </button>
   );
 };
 

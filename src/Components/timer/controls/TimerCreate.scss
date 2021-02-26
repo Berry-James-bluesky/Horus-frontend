@@ -1,0 +1,18 @@
+@import '../../../var';
+
+.add-timer-input {
+  width: 70%;
+  background: none;
+  font-family: $font-primary;
+}
+
+.add-timer-form {
+  padding: 1rem 0;
+  label {
+    font-family: $font-primary;
+  }
+}
+
+.add-timer-wrapper {
+  height: fit-content;
+}

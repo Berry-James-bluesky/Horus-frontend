@@ -13,7 +13,7 @@ const TimerDashboard = () => {
 
     return(
         <div className="timer-dashboard pl-6">
-            <div className={'flex items-center transition-all'}>
+            <div className={'flex items-center justify-between transition-all'}>
                 <FilterContainer />
                 <TimerControl/>
             </div>

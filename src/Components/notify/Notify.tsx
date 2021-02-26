@@ -23,8 +23,8 @@ export const Notify: React.FC<Props> = (props: any) => {
   }
 
   return (
-    <div className="fixed h-screen w-screen top-0 left-0 pointer-events-none z-50">
-      <div className="notify absolute top-4 left-4 w-40 h-12 bg-secondary rounded-md shadow-md flex justify-center items-center">
+    <div className="fixed h-screen w-screen top-0 left-0 pointer-events-none z-50 notify-container">
+      <div className="notify w-40 h-12 rounded-md shadow-md flex justify-center items-center">
         <Icon name={props.icon} />
         <span className="text-white">{props.text}</span>
       </div>

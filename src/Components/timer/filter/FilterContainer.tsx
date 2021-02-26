@@ -80,7 +80,7 @@ export const FilterContainer = () => {
   return (
     <>
       <button onClick={handleIsVisible} className={`static fixed z-50 right-4 top-4 md:hidden text-white rounded-md text-xl ${btnStatus}`}><Icon name={'options'} /></button>
-      <div className={`bg-white flex items-start flex-col justify-center mb-2 md:p-2 md:pl-6 border-l-8 border-secondary mt-2 timer-filter-container ${barStatus}`}>
+      <div className={`flex items-start flex-col justify-center mb-2 md:p-2 md:pl-6 border-l-8 border-secondary mt-2 timer-filter-container ${barStatus}`}>
         <div className={'block md:hidden w-full flex items-center justify-start pl-4 filters-header'} style={{backgroundImage: `url(${Pyramids})`}}><h2>Filters</h2></div>
        <div className={'flex items-center w-full'}>
         <div className={'show-filters-container'}>

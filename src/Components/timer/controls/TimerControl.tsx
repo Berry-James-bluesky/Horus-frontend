@@ -18,8 +18,32 @@ const TimerControl = () => {
         setShowModal(!showModal);
     };
 
+    const tabClass = timerType ? 'switch-btn-left' : 'switch-btn-right';
+
+    const inactiveType = timerType ? 'Add Current Task' : 'Add Past Task';
+
+    const tabType = timerType ? 'tab-left' : 'tab-right';
+
     const content = (
-        <TimerCreate current={timerType}/>
+        <div>
+            <div className={'modal-tab'}>
+                <button
+
+                    className={`switch-btn text-white text-xl ${tabClass}`}
+                >
+                    {!timerType ? "Add Current task" : "Add Past task"}
+                </button>
+                <button
+                    className={`inactive-tab text-white text-xl ${tabType}`}
+                    onClick={(initialValue: any) =>
+                        setTimerType((initialValue) => !initialValue)
+                    }
+                >
+                    {inactiveType}
+                </button>
+            </div>
+            <TimerCreate current={timerType}/>
+        </div>
     )
 
     const barStatus = showBar ? 'add-timer-visible' : 'add-timer-hidden';
@@ -27,25 +51,8 @@ const TimerControl = () => {
 
   return (
     <>
-      <button
-        onClick={handleShowBar}
-        className={`static md:hidden text-white pl-6 pr-6 pt-2 pb-2 rounded-md text-md ${btnStatus}`}
-      >
-        Add Timer
-      </button>
+        <button onClick={handleShowModal} className={'add-timer-btn'}>Add Timer</button>
         <Modal content={content} title={'Add a Timer'} active={showModal} closeModal={handleShowModal} />
-
-        <div className="w-100 bg-white shadow-sm flex mt-8 p-6 justify-left items-center border-l-8 border-secondary relative">
-        <Button
-          onClick={(initialValue: any) =>
-            setTimerType((initialValue) => !initialValue)
-          }
-          disableElevation
-          className="switch-btn"
-        >
-          {!timerType ? "Add current task" : "Add past task"}
-        </Button>
-      </div>
     </>
   );
 };

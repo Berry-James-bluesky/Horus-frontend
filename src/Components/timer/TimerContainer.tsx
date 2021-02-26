@@ -83,7 +83,7 @@ const TimerContainer: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="h-full">
+      <div className="h-full w-full loading-background">
         <CircularProgress className="m-auto absolute left-0 right-0 top-0 bottom-0" />
       </div>
     );
