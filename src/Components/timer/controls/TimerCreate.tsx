@@ -5,14 +5,11 @@ import { Notify } from "../../notify/Notify";
 import { TimeTracker } from "./TimeTracker";
 import { useSharedTimeState } from "./functions/sharedTimeState";
 import { useSharedTimerState } from "../TimerContainer";
-import { postTimer, getTimers } from "./../../API";
-import { useSharedTimerDataState } from "../../chart/functions/sharedTimerDataState";
+import { postTimer } from "../../API";
 import './TimerCreate.scss';
 
 /**
- * [INCOMPLETE - no data is sent to backend and no new timer object is created.  Data is currently being set to state timerData and console logged for proof of concept.  Time tracker does not function correctly and no time data is logged)
- * Creates a new timer and a new { timerObj }
- * Uses semantic UI form, input and checkbox components
+ * Creates a new timer and a new { timerObj } (ideally)
  *
  * @constructor
  */
@@ -80,7 +77,7 @@ const TimerCreate = (props: { current: boolean }) => {
       setTimeout(
         function () {
           setShowNotify(false);
-        }.bind(this),
+        },
         4000
       );
     } else if (!props.current) {
@@ -100,7 +97,7 @@ const TimerCreate = (props: { current: boolean }) => {
         setTimeout(
           function () {
             setShowNotify(false);
-          }.bind(this),
+          },
           4000
         );
       } else {
@@ -153,7 +150,7 @@ const TimerCreate = (props: { current: boolean }) => {
           addTimer={(e: React.FormEvent<HTMLInputElement>) => {
             handleTimerAdd();
           }}
-          isDisabled={timerData === undefined ? true : false}
+          isDisabled={timerData === undefined}
         />
       </div>
       <Notify isVisible={showNotify} text={notifyMsg} icon={iconState} />

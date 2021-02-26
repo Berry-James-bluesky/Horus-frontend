@@ -10,19 +10,18 @@ import {
   HorizontalBar,
   Scatter,
 } from "react-chartjs-2";
-import { useSharedTimerDataState } from "../chart/functions/sharedTimerDataState";
+import { useSharedTimerDataState } from "./functions/sharedTimerDataState";
 import { useSharedFetchedData } from "./Calculations/ProjectSplit";
 import { useSharedChartState } from "./functions/sharedChartState";
 
 /**
- * Generates a Pie graph out of supplied data
  *
  * @prop {object} graphData
  * @prop {object} graphOptions
  */
 
 const Graph = () => {
-  const { timerData, graphStyle } = useSharedTimerDataState();
+  const { graphStyle } = useSharedTimerDataState();
   const { fetchedData, fetchedLabels } = useSharedFetchedData();
   const { chartName } = useSharedChartState();
   const data = {
@@ -32,7 +31,7 @@ const Graph = () => {
         label: chartName,
         data: fetchedData,
         backgroundColor: [
-          "#852324",
+          "rgba(133,35,36, 1)",
           "#6441a4",
           "#fff",
           "#0a115e",
@@ -49,6 +48,8 @@ const Graph = () => {
       display: true,
       text: chartName,
       fontSize: 20,
+      color: '#fff',
+      fontColor: '#fff'
     },
     scales: {
       yAxes: [
@@ -59,11 +60,13 @@ const Graph = () => {
         },
       ],
     },
+    legend: {
+      labels: {
+        fontColor: '#fff',
+        defaultFontColor: '#fff'
+      }
+    }
   };
-
-  let date = new Date();
-
-  let string = date.toString();
 
   if (graphStyle === "Pie") {
     return <Pie data={data} options={options} />;
@@ -92,7 +95,7 @@ const Graph = () => {
   if (graphStyle === "Bubble") {
     return <Bubble data={data} options={options} />;
   } else {
-    return <span></span>;
+    return(null);
   }
 };
 

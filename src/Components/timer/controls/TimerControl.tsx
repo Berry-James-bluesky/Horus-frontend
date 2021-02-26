@@ -8,11 +8,6 @@ const TimerControl = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [timerType, setTimerType] = useState(true);
-    const [showBar, setShowBar] = useState(false);
-
-    const handleShowBar = () => {
-        setShowBar(!showBar)
-    };
 
     const handleShowModal = () => {
         setShowModal(!showModal);
@@ -45,9 +40,6 @@ const TimerControl = () => {
             <TimerCreate current={timerType}/>
         </div>
     )
-
-    const barStatus = showBar ? 'add-timer-visible' : 'add-timer-hidden';
-    const btnStatus = showBar ? 'bg-secondary' : 'bg-gray-200';
 
   return (
     <>

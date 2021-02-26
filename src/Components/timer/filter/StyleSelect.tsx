@@ -27,7 +27,6 @@ export const StyleSelect = () => {
 
     const handleChange = (e: any) => {
         setStyleValue(e.value)
-        console.log(styleValue)
     }
 
     return(

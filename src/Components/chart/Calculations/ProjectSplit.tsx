@@ -7,7 +7,6 @@ import { useBetween } from "use-between";
 
 /**
  * Returns a graph with the total split of hours between each client.
- * I plan to make this work to also filter between assigned developers and project names.
  */
 
 const useFetchedData = () => {
@@ -26,17 +25,12 @@ export const useSharedFetchedData = () => useBetween(useFetchedData);
 
 export const ProjectSplit = () => {
   const {
-    chartType,
-    setChartType,
-    chartName,
-    setChartName,
+    chartType
   } = useSharedChartState();
 
   const { timerData, graphStyle } = useSharedTimerDataState();
 
   const splitBy = `el.${chartType}`;
-
-  console.log(splitBy);
 
   /**
    * @typedef
@@ -59,8 +53,6 @@ export const ProjectSplit = () => {
   useEffect(() => {
     const finalData: Array<ISplitObj> = [];
 
-    // the following arrays are sent directly to the chart.js charts and MUST align
-    const fetchedTimes: Array<number> = [];
     const fetchedSplit = new Set();
 
     // loop through timers and add each 'property to split by' to the set
@@ -104,7 +96,6 @@ export const ProjectSplit = () => {
           clientObj.total = clientObj.total + timeTotal;
         }
       });
-      console.log(finalData);
     });
 
     const finalLabels: Array<string> = [];

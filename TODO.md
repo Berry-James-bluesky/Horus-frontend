@@ -1,19 +1,5 @@
 ## TO DO
 
-- Fix card/list filter
-- Get timer filters working
-- Style modals
-- Get react-timer working properly
-
-
-_Pages_
-- Basic settings page (maybe light/dark mode toggle)
-- Design statistics page
-- Add more to help menu
-
-Chart options to add:
-- All timers
-- Client Split
-- Project Split
-- User Split
-- 
+- Delete Timer
+- Edit Timer
+- Get displayed clock to work with actual data

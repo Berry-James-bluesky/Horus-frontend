@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Filter } from "./Filter";
-import { useBetween } from "use-between";
 import { Checkbox, Button, Icon } from "semantic-ui-react";
 import { useSharedTimerState } from "../TimerContainer";
-import { TextField } from "@material-ui/core";
 import { useSharedFilterState } from "./functions/sharedFilterState";
 import Pyramids from "../../../imgs/sidebar-topper.jpg";
 import "./FilterContainer.scss";

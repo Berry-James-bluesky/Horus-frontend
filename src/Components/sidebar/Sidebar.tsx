@@ -14,10 +14,8 @@ import './Sidebar.scss';
  * { Profile } is displayed at the bottom
  * changing the 'size' state will toggle between the small/large side bars
  *
- *
  * @constructor
  */
-
 
 const Sidebar: React.FC = () => {
 

@@ -10,14 +10,11 @@ interface Props {
 
 export const ChartFilterItem = (props: Props) => {
   const {
-    chartType,
     setChartType,
-    chartName,
     setChartName,
   } = useSharedChartState();
 
   const chartSet = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(e.currentTarget.value);
     setChartType(e.currentTarget.value);
     setChartName(e.currentTarget.innerText);
   };

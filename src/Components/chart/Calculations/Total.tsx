@@ -3,6 +3,11 @@ import { differenceInSeconds } from "date-fns";
 import { getTimers } from "../../API";
 import Graph from "../Graph";
 
+/**
+ * @deprecated
+ * @constructor
+ */
+
 export const Total = () => {
   const [fetchedData, setFetchedData] = useState<Array<number>>([]);
   const [fetchedLabels, setFetchedLabels] = useState<Array<string>>([]);

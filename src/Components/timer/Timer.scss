@@ -1,11 +1,23 @@
 @import '../../var';
 
+@keyframes timerEntry {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .timer {
   margin: 0 !important;
   width: auto !important;
 }
 
 .timer-body {
+  animation: timerEntry 0.3s ease-out;
   box-shadow: 0 0 1rem rgba(0,0,0,0.1);
   backdrop-filter: blur( 8.5px );
   -webkit-backdrop-filter: blur( 8.5px );

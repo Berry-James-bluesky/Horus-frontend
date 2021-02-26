@@ -9,8 +9,14 @@ import { NotFound } from './pages/NotFound';
 import { Calendar } from './pages/Calendar';
 import Sidebar from './Components/sidebar/Sidebar';
 
-// @ts-ignore
-const App: React.FC = ({ isVisible }) => {
+/**
+ * The App
+ * @constant
+ * @type {Functional Component}
+ * @default
+ *
+ */
+const App: React.FC = () => {
 
   return (
       <BrowserRouter>

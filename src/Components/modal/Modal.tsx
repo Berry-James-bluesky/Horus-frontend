@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Modal.scss';
 
-/**
- * A simple modal component
- *
- */
-
 interface Props {
     active: boolean
     /** Toggled whether or not the modal is active */
@@ -25,9 +20,6 @@ export const Modal = (props: Props) => {
         setIsVisible(props.active)
     }, [props.active]);
 
-    const handleBgClick = (e: any) => {
-        setIsVisible(!isVisible)
-    }
 
     if(!isVisible) {
         return(null)
