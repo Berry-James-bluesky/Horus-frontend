@@ -6,7 +6,7 @@ import { ChartStyle } from "../filters/buttons/ChartStyle";
 import { useSharedChartState } from "../functions/sharedChartState";
 import { useSharedTimerDataState } from "../functions/sharedTimerDataState";
 import { useBetween } from "use-between";
-import {Loader} from "../../loader/Loader";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const CalcContainer = () => {
   const {
@@ -41,7 +41,11 @@ const CalcContainer = () => {
   };
 
   if (loading) {
-    return <Loader />;
+    return (
+        <div className="h-full">
+          <CircularProgress className="m-auto absolute left-0 right-0 top-0 bottom-0" />
+        </div>
+    );
   }
 
   console.log(`el.${chartType}`);

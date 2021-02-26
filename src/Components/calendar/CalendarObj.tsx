@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { getTimers } from "../API";
-import { Loader } from '../loader/Loader';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 interface timerData {
   data: any;
@@ -32,8 +32,12 @@ export const CalendarObj: React.FC = () => {
     });
   }, []);
 
-  if(loader) {
-    return(<Loader />)
+  if (loader) {
+    return (
+        <div className="h-full">
+          <CircularProgress className="m-auto absolute left-0 right-0 top-0 bottom-0" />
+        </div>
+    );
   }
 
   return (
