@@ -5,22 +5,30 @@
   width: auto !important;
 }
 
-.timer-full {
-  padding: 1.5rem;
+.timer-body {
+  box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+  backdrop-filter: blur( 8.5px );
+  -webkit-backdrop-filter: blur( 8.5px );
+  border-radius: 5px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  color: #fff;
+  text-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+
+  .timer-section {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+h3 {
+  text-transform: uppercase;
 }
 
 .card-item {
 
   .clock-wrapper {
-    width: calc(100% + 30px);
-    background-color: $h1;
-    box-shadow: 0 0 1rem rgba(226,110,92,0.4);
-    transform: translateX(-15px);
     margin-top: 15px;
     margin-bottom: 15px;
     height: 54px;
-    filter: opacity(0.9);
-    backdrop-filter: blur(10px);
 
     .clock {
       color: #f8f8f8;
@@ -34,11 +42,11 @@
   display: grid !important;
   grid-template-columns: 1fr 1fr 1fr 1fr !important;
   grid-template-rows: 1fr !important;
-  border-left: 8px solid $h2;
   max-height: 60px;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
 
+  .timer-tag {
+
+  }
 
   div {
     border-bottom: none;
@@ -46,6 +54,8 @@
     align-items: center;
     justify-content: center;
     height: auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
   }
 
 
@@ -57,3 +67,12 @@
   }
 }
 
+.timer-close-btn {
+  transform: translate(5px, -5px);
+  transition: 0.2s;
+  font-family: $font-primary;
+}
+
+.timer-close-btn:hover {
+  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+}

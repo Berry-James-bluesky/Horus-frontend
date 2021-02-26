@@ -4,6 +4,7 @@ import "./TimerContainer.scss";
 import { getTimers } from "../API";
 import Select from "react-select";
 import { useBetween } from "use-between";
+import { Loader } from '../loader/Loader';
 
 /**
  *
@@ -36,6 +37,8 @@ const TimerContainer: React.FC = () => {
   // set states
   const [styleValue, setStyleValue] = useState("list");
   // const [fetchedTimers, setFetchedTimers] = useState<Array<timerDataType>>([]);
+  const [loading, setLoading] = useState(true);
+
   const {
     timerModel,
     setTimerModel,
@@ -53,6 +56,7 @@ const TimerContainer: React.FC = () => {
       // @ts-ignore
       setTimerModel(timers.data);
       console.log(timerModel);
+      setLoading(false)
     });
   }, []);
 
@@ -76,6 +80,10 @@ const TimerContainer: React.FC = () => {
   const handleChange = (e: any) => {
     setStyleValue(e.value);
   };
+
+  if(loading) {
+    return(<Loader />)
+  }
 
   return (
     <>

@@ -6,6 +6,7 @@ import { ChartStyle } from "../filters/buttons/ChartStyle";
 import { useSharedChartState } from "../functions/sharedChartState";
 import { useSharedTimerDataState } from "../functions/sharedTimerDataState";
 import { useBetween } from "use-between";
+import {Loader} from "../../loader/Loader";
 
 const CalcContainer = () => {
   const {
@@ -40,14 +41,14 @@ const CalcContainer = () => {
   };
 
   if (loading) {
-    return <span>...loading</span>;
+    return <Loader />;
   }
 
   console.log(`el.${chartType}`);
 
   return (
     <div className="w-full relative right-0 p-12">
-      <h1 className="mt-0">Statistics</h1>
+      <h1 className="mt-0 title">Statistics</h1>
       <ChartStyle clickEvent={getType} />
       <ProjectSplit />
       <Total />

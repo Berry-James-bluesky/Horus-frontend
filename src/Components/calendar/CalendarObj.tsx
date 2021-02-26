@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { getTimers } from "../API";
+import { Loader } from '../loader/Loader';
 
 interface timerData {
   data: any;
@@ -31,8 +32,8 @@ export const CalendarObj: React.FC = () => {
     });
   }, []);
 
-  if (loader) {
-    return <span>Loading...</span>;
+  if(loader) {
+    return(<Loader />)
   }
 
   return (

@@ -1,0 +1,66 @@
+@import '../../var';
+
+@keyframes modalEntry {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes backdropEntry {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-underlay {
+  backdrop-filter: blur(3px);
+  background-color: rgba(0,0,0,0.1);
+}
+
+.modal-container {
+  animation: modalEntry 0.4s ease-out forwards;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(50px);
+  width: 700px;
+  height: 400px;
+  margin: auto;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 1rem rgba(0,0,0,0.4);
+  color: #000;
+  opacity: 0;
+
+  .modal-header {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 9999px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  transform: translate(8px, -8px);
+  transition: 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: #3e999f;
+}

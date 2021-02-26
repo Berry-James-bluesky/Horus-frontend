@@ -19,12 +19,10 @@ interface Props {
 export const SidebarItem: React.FC<Props> = (props: any) => {
 
     return(
-        <NavLink exact to={props.link} activeClassName='border-b-4 border-secondary text-primary active-link' className='border-b-4 border-transparent sidebar-link'>
-            <div className="burger-item pt-4 pb-2 mb-2 flex flex-row items-center font-sans text-l text-primary">
+        <NavLink exact to={props.link} activeClassName='active-link' className='sidebar-link'>
+            <div className="burger-item pt-4 pb-4 pl-4 flex flex-row items-center font-sans text-l text-primary">
                 <Icon className='burger-item-icon float-right' size='large' name={props.iconName} />
-
                 <span className='ml-8'>{props.label}</span>
-
             </div>
         </NavLink>
     )

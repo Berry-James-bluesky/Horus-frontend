@@ -2,6 +2,7 @@ import React from 'react';
 import { Clock } from './Clock';
 import { Button, Icon } from 'semantic-ui-react';
 import './Timer.scss';
+import Noise from '../../imgs/noise.png';
 
 /**
  * Displays current timers.
@@ -29,23 +30,24 @@ interface Props {
 export const TimerObj: React.FC<Props> = (props) => {
 
     return(
-        <article className={'timer-full'}>
-            <div className={`bg-white font-sans shadow-lg ${props.timerStyle}-item`}>
-                <div className='w-full h-16 flex items-center justify-center font-bold bg-gray-100'>
-                    <span>{props.timerName}</span>
+        // <article className={'timer-full'}>
+            <div className={`timer-body font-sans ${props.timerStyle}-item`}>
+                <button className={'absolute top-0 right-0 rounded-full w-6 h-6 bg-white text-primary flex items-center justify-center timer-close-btn'}>&times;</button>
+                <div className='w-full h-16 flex items-center justify-center font-bold timer-section'>
+                    <span className={'text-2xl uppercase'}>{props.timerName}</span>
                 </div>
-                <div className='w-full h-12 text-sm flex items-center justify-center flex-col'>
-                    <span>{props.timerClient}</span>
-                    <span>{props.timerProject}</span>
+                <div className='w-full h-16 text-sm flex items-center justify-evenly timer-section'>
+                    <span className={'timer-tag bg-blue-400 pt-2 pb-2 pl-4 pr-4 rounded-2xl shadow-md'}>{props.timerClient}</span>
+                    <span className={'timer-tag bg-blue-400 pt-2 pb-2 pl-4 pr-4 rounded-2xl shadow-md'}>{props.timerProject}</span>
                 </div>
                 <div className='clock-wrapper h-12 flex items-center justify-center'>
                     <Clock />
                 </div>
                 <div className='w-full h-16 flex items-center justify-center'>
-                    <button className={'flex justify-center bg-gray-200 w-12 h-12 items-center hover:bg-blue-200'}><Icon name={'pause'} /></button>
+                    <button className={'styled-button'}><Icon name={'pause'} /></button>
                 </div>
             </div>
-        </article>
+        // </article>
     )
 
 }

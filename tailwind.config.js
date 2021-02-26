@@ -11,7 +11,7 @@ module.exports = {
     },
     color: {
       'secondary': '#e26e5c',
-      'white': '#fff'
+      'white': '#ffffff'
     },
     fontFamily: {
       'serif': ['Rammetto\\ One'],
