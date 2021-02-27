@@ -15,7 +15,7 @@ const TimerControl = () => {
 
     const tabClass = timerType ? 'switch-btn-left' : 'switch-btn-right';
 
-    const inactiveType = timerType ? 'Add Current Task' : 'Add Past Task';
+    const inactiveType = timerType ? 'Add Past Time' : 'Add New Timer';
 
     const tabType = timerType ? 'tab-left' : 'tab-right';
 
@@ -26,7 +26,7 @@ const TimerControl = () => {
 
                     className={`switch-btn text-white text-xl ${tabClass}`}
                 >
-                    {!timerType ? "Add Current task" : "Add Past task"}
+                    {!timerType ? "Add Past Time" : "Add New Timer"}
                 </button>
                 <button
                     className={`inactive-tab text-white text-xl ${tabType}`}
